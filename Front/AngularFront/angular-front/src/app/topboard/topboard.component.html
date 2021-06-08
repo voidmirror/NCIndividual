@@ -1,0 +1,12 @@
+<!-- <p>topboard works!</p> -->
+<ul class="topbar-menu">
+    <li *ngFor="let menuitem of menuitems">
+        <span *ngIf="menuitem.name != 'Категории'">{{menuitem.name}}</span>
+        <span *ngIf="menuitem.name == 'Категории'">
+            <select>
+                <option>Категории:</option>
+                <option *ngFor="let categ of categories">{{categ.name}}</option>
+            </select>
+        </span>
+    </li>
+</ul>

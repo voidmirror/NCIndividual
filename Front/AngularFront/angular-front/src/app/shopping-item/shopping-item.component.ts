@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Position } from '../Position';
+// import { positions } from '../list-positions'
 
 @Component({
   selector: 'app-shopping-item',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingItemComponent implements OnInit {
 
-  constructor() { }
+  // positions: Position[];
+
+  constructor() {
+    // this.positions = positions;
+  }
+
+  getPosition(): void {
+
+  }
 
   ngOnInit(): void {
   }

@@ -1,0 +1,13 @@
+ul.topbar-menu {
+    margin: 0;
+    margin-bottom: 30px;
+    padding: 4px;
+}
+ul.topbar-menu li {
+    display: inline;
+    margin-left: 5px;
+    padding: 10px;
+    border-left: 1px solid rgb(165, 165, 165);
+    border-right: 1px solid rgb(165, 165, 165);
+    font-size: larger;
+}
