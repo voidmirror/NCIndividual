@@ -11,19 +11,22 @@ import { PositionService } from '../position-service.service';
 })
 export class ProductCatalogComponent implements OnInit {
 
-  listPos: ListPositions;
+  listPos: PositionListComponent;
   positions: Position[];
 
   constructor(private positionService: PositionService) {
-    this.listPos = new ListPositions();
+    this.listPos = new PositionListComponent(positionService);
     this.positions = this.listPos.getPositions();
    }
 
   ngOnInit(): void {
-    // let positions = this.listPos.getPositions();
-    // console.log(positions);
+    this.positionService.retrieveAllPositions().subscribe(data => {
+      this.positions = data;
+    });
+    console.log(this.positions);
+    // this.positions = this.listPos.getPositions();
   }
-
+  
   
 
 }

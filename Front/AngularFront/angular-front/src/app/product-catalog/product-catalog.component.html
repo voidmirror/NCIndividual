@@ -1,10 +1,10 @@
 <!-- <p>product-catalog works!</p> -->
 <div class="card-list">
-    <!-- <ul class="item-card" *ngFor="let pos of positions">
+    <ul class="item-card" *ngFor="let pos of positions">
         <li>
-            <div class="item-card-component">
+            <!-- <div class="item-card-component">
                 <img [src]="pos.imagePath">
-            </div>
+            </div> -->
             <div class="item-card-component">
                 <p>
                     id: {{pos.id}}
@@ -13,10 +13,12 @@
                     name: {{pos.name}}
                 </p>
                 <p>
+                    price: {{pos.price}}
+                </p>
+                <p>
                     description: {{pos.description}}
                 </p>
             </div>
         </li>
-    </ul> -->
-    <app-position-list></app-position-list>
+    </ul>
 </div>
