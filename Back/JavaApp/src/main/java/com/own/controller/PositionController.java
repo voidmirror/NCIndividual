@@ -5,15 +5,13 @@ import com.own.exception.ResourceNotFoundException;
 import com.own.repository.PositionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/rest/v1")
+@CrossOrigin(origins = "http://localhost:4200")
 public class PositionController {
 
     @Autowired
@@ -31,6 +29,11 @@ public class PositionController {
         Position position = positionRepository.findById(positionId)
                 .orElseThrow(() -> new ResourceNotFoundException("Position not found for id: " + positionId));
         return ResponseEntity.ok().body(position);
+    }
+
+    @PostMapping("/positions")
+    public void addPosition(@RequestBody Position position) {
+        positionRepository.save(position);
     }
 
 }

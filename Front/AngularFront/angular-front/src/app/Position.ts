@@ -1,7 +1,7 @@
-export interface Position {
-    id: number;
-    name: string;
-    price: number;
-    description: string;
-    imagePath: string;
+export class Position {
+    id!: number;
+    name!: string;
+    price!: number;
+    description!: string;
+    // imagePath: string;
 }
