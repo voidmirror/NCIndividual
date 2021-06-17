@@ -1,7 +1,5 @@
 package com.own.entity;
 
-import com.own.additional.Description;
-
 import javax.persistence.*;
 
 @Entity
