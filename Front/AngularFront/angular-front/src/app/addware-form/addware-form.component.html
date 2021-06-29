@@ -1,0 +1,23 @@
+<form [formGroup]="addWareForm" (ngSubmit)="onSubmit()" name="form">
+    <div>
+        <p>
+            <label>Name</label>
+            <input name="name" type="text" formControlName="name">
+        </p>
+        <p>
+            <label>Price</label>
+            <input name="price" type="text" formControlName="price">
+        </p>
+        <p>
+            <label>Description</label>
+            <input name="description" type="text" formControlName="description">
+        </p>
+        <p>
+            <button type="submit">
+                Submit
+            </button>
+        </p>
+    </div>
+</form>
+
+<!-- [disabled]="!form.form.valid" -->

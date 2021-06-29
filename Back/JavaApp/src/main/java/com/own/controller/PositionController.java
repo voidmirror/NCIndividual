@@ -4,6 +4,7 @@ import com.own.entity.Position;
 import com.own.exception.ResourceNotFoundException;
 import com.own.repository.PositionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -32,8 +33,8 @@ public class PositionController {
         return ResponseEntity.ok().body(position);
     }
 
-    @PostMapping("/positions")
-    @PreAuthorize("hasRole('ROLE_STOREKEEPER')")
+    @PostMapping(value = "/positions", consumes = {MediaType.APPLICATION_JSON_VALUE})
+//    @PreAuthorize("hasRole('ROLE_STOREKEEPER')")
     public void addPosition(@RequestBody Position position) {
         positionRepository.save(position);
     }

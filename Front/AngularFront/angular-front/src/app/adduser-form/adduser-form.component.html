@@ -1,0 +1,31 @@
+<form [formGroup]="adduserForm" (ngSubmit)="onSubmit()" name="form">
+    <div>
+        <p>
+            <label>Name</label>
+            <input name="name" type="name" formControlName="name">
+        </p>
+        <p>
+            <label>Login</label>
+            <input name="login" type="text" formControlName="login">
+        </p>
+        <p>
+            <label>Password</label>
+            <input name="password" type="password" formControlName="password">
+        </p>
+        <p>
+            <label>E-mail</label>
+            <input name="email" type="email" formControlName="email">
+        </p>
+        <p>
+            <label>Phone Number</label>
+            <input name="phoneNumber" type="phoneNumber" formControlName="phoneNumber">
+        </p>
+        <p>
+            <button type="submit">
+                Submit
+            </button>
+        </p>
+    </div>
+</form>
+
+<!-- [disabled]="!form.form.valid" -->

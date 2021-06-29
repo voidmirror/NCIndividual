@@ -9,6 +9,10 @@ import { ProductCatalogComponent } from './product-catalog/product-catalog.compo
 import { PositionListComponent } from './position-list/position-list.component';
 import { PositionService } from './position-service.service'
 import { HttpClientModule } from '@angular/common/http';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddwareFormComponent } from './addware-form/addware-form.component';
+import { AdduserFormComponent } from './adduser-form/adduser-form.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +20,16 @@ import { HttpClientModule } from '@angular/common/http';
     ShoppingItemComponent,
     TopboardComponent,
     ProductCatalogComponent,
-    PositionListComponent
+    PositionListComponent,
+    LoginFormComponent,
+    AddwareFormComponent,
+    AdduserFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [PositionService],
   bootstrap: [AppComponent]
