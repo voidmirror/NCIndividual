@@ -1,0 +1,11 @@
+ul.toppanel-anon {
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 4px;
+}
+ul.toppanel-anon li {
+    display: inline;
+    margin-left: 5px;
+    padding: 10px;
+    font-size: small;
+}

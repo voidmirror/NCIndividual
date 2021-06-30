@@ -13,6 +13,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddwareFormComponent } from './addware-form/addware-form.component';
 import { AdduserFormComponent } from './adduser-form/adduser-form.component';
+import { ToppanelAnonComponent } from './toppanel-anon/toppanel-anon.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { AdduserFormComponent } from './adduser-form/adduser-form.component';
     PositionListComponent,
     LoginFormComponent,
     AddwareFormComponent,
-    AdduserFormComponent
+    AdduserFormComponent,
+    ToppanelAnonComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

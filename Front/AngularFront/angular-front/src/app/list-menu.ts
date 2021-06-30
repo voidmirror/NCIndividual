@@ -15,4 +15,11 @@ export const CATEGORIES: MenuItem[] = [
     { name: 'Для мужчин' },
     { name: 'Для женщин' },
     { name: 'Для детей' }
-]
+];
+
+export const TOPPANEL_ANON: MenuItem[] = [
+    { name: 'Помощь' },
+    { name: 'Отслеживание заказов' },
+    { name: 'Профиль' },
+    { name: 'Корзина' }
+];

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { User } from '../User';
 import { UserService } from '../user-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -15,7 +16,7 @@ export class LoginFormComponent implements OnInit {
     password: new FormControl()
   });
 
-  constructor(private userService: UserService) { };
+  constructor(private userService: UserService, private router: Router) { };
 
   ngOnInit(): void {
   };
@@ -29,6 +30,7 @@ export class LoginFormComponent implements OnInit {
     }))
     console.log(logged);
     console.log(user);
+    this.router.navigate(['']);
   }
 
 }
