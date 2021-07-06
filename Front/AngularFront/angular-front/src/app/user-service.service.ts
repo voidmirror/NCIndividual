@@ -13,9 +13,9 @@ export class UserService {
   private userSaveUrl: string;
 
   constructor(private http: HttpClient) {
-    this.usersUrl = 'http://localhost:8080/rest/v1/users';
-    this.usersLoginUrl = 'http://localhost:8080/rest/v1/users/login';
-    this.userSaveUrl = 'http://localhost:8080/rest/v1/users/add';
+    this.usersUrl = 'https://localhost:8080/rest/v1/users';
+    this.usersLoginUrl = 'https://localhost:8080/rest/v1/users/login';
+    this.userSaveUrl = 'https://localhost:8080/rest/v1/users/add';
   }
 
   public retrieveAllUsers(): Observable<User[]> {

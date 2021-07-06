@@ -7,7 +7,7 @@ import java.util.Collection;
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
@@ -24,4 +24,7 @@ public class Role {
     private Collection<Privilege> privileges;
 
 
+    public Role(String name) {
+        this.name = name;
+    }
 }

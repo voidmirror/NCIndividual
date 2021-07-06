@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@Table(name = "user", indexes = @Index(name = "lgn_index", columnList = "login"))
 public class User {
 
     @Id
