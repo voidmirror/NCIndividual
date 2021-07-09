@@ -17,7 +17,7 @@ public class User {
     private String name;
 
     @Size(min = 3, max = 30)
-    private String login;
+    private String username;
 
     @Size(min = 6)
     private String password;
@@ -27,14 +27,18 @@ public class User {
 
     private String phoneNumber;
 
-    @ManyToMany
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> roles;
+    private boolean active;
+
+    private String roles;
+
+//    @ManyToMany
+//    @JoinTable(
+//            name = "users_roles",
+//            joinColumns = @JoinColumn(
+//                    name = "user_id", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(
+//                    name = "role_id", referencedColumnName = "id"))
+//    private Collection<Role> roles;
 
     public int getId() {
         return id;
@@ -68,12 +72,12 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -84,12 +88,26 @@ public class User {
         this.password = password;
     }
 
-    public Collection<Role> getRoles() {
+//    public Collection<Role> getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(Collection<Role> roles) {
+//        this.roles = roles;
+//    }
+
+
+    public String getRoles() {
         return roles;
     }
 
-    public void setRoles(Collection<Role> roles) {
+    public void setRoles(String roles) {
         this.roles = roles;
+    }
+
+    // TODO: getter-setter?
+    public boolean isActive() {
+        return active;
     }
 
     @Override
@@ -97,7 +115,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", login='" + login + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +

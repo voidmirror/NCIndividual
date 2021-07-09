@@ -27,21 +27,21 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @PostMapping("/add")
-    public void addUser(@RequestBody User user) throws UserLoginAlreadyExistsException {
-        System.out.println(user);
-        userService.signUp(user);
-//        userRepository.save(user);
-    }
+//    @PostMapping("/add")
+//    public void addUser(@RequestBody User user) throws UserLoginAlreadyExistsException {
+//        System.out.println(user);
+//        userService.signUp(user);
+////        userRepository.save(user);
+//    }
 
-    @PostMapping("/login")
-    public void loginUser(@RequestBody User user) throws UserNotFoundException {
-        if (userService.loginUser(user)) {
-            System.out.println(user.getName() + " logged IN!");
-            System.out.println(user);
-        } else {
-            System.out.println("Problem with " + user.getLogin());
-        }
-    }
+//    @PostMapping("/login")
+//    public void loginUser(@RequestBody User user) throws UserNotFoundException {
+//        if (userService.loginUser(user) != null) {
+//            System.out.println(user.getName() + " logged IN!");
+//            System.out.println(user);
+//        } else {
+//            System.out.println("Problem with " + user.getUsername());
+//        }
+//    }
 
 }

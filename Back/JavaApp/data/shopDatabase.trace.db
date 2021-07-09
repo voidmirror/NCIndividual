@@ -953,3 +953,15 @@ password text,
 email text,
 phone_number text
 ) [42101-200]
+2021-07-08 12:21:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "USERS_ROLES" не найдена
+Table "USERS_ROLES" not found; SQL statement:
+select roles0_.user_id as user_id1_5_0_, roles0_.role_id as role_id2_5_0_, role1_.id as id1_2_1_, role1_.name as name2_2_1_ from users_roles roles0_ inner join role role1_ on roles0_.role_id=role1_.id where roles0_.user_id=? [42102-200]
+2021-07-08 12:23:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "USERS_ROLES" не найдена
+Table "USERS_ROLES" not found; SQL statement:
+select roles0_.user_id as user_id1_5_0_, roles0_.role_id as role_id2_5_0_, role1_.id as id1_2_1_, role1_.name as name2_2_1_ from users_roles roles0_ inner join role role1_ on roles0_.role_id=role1_.id where roles0_.user_id=? [42102-200]
+2021-07-08 12:24:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "USERS_ROLES" не найдена
+Table "USERS_ROLES" not found; SQL statement:
+select roles0_.user_id as user_id1_5_0_, roles0_.role_id as role_id2_5_0_, role1_.id as id1_2_1_, role1_.name as name2_2_1_ from users_roles roles0_ inner join role role1_ on roles0_.role_id=role1_.id where roles0_.user_id=? [42102-200]

@@ -28,11 +28,12 @@ public class UserService {
     private Pbkdf2PasswordEncoder encoder;
 
     public User loginUser(User user) throws UserNotFoundException {
-        User found = userRepository.findByLogin(user.getLogin());
-        if (found == null) {
-            String message = "User with this login does not exists: " + user.getLogin();
-            throw new UserNotFoundException(message);
-        }
+        String message = "User with this login does not exists: " + user.getUsername();
+        User found = userRepository.findByUsername(user.getUsername()).orElseThrow(() ->new UserNotFoundException(message));
+//        if (found == null) {
+//            String message = "User with this login does not exists: " + user.getUsername();
+//            throw new UserNotFoundException(message);
+//        }
 //        return hasher.checkPassword(user.getPassword(), login.getPassword());
         if (encoder.matches(user.getPassword(), found.getPassword())) {
             return found;
@@ -41,21 +42,21 @@ public class UserService {
         }
     }
 
-    public User signUp(@Valid User user) throws UserLoginAlreadyExistsException {
-        System.out.println(user);
-//        User existed = userRepository.findByLogin(user.getLogin());
-        if (userRepository.findByLogin(user.getLogin()) != null) {
-            String message = "User with this login already exists: " + user.getLogin();
-            throw new UserLoginAlreadyExistsException(message);
-        }
-
-//        user.setPassword(hasher.hash(user.getPassword()));
-//        PasswordEncoder passwordEncoder = new Pbkdf2PasswordEncoder();
-
-        String s = encoder.encode(user.getPassword());
-        user.setPassword(s);
-
-        return userRepository.save(user);
-    }
+//    public User signUp(@Valid User user) throws UserLoginAlreadyExistsException {
+//        System.out.println(user);
+////        User existed = userRepository.findByLogin(user.getLogin());
+//        if (userRepository.findByUsername(user.getUsername()) != null) {
+//            String message = "User with this login already exists: " + user.getUsername();
+//            throw new UserLoginAlreadyExistsException(message);
+//        }
+//
+////        user.setPassword(hasher.hash(user.getPassword()));
+////        PasswordEncoder passwordEncoder = new Pbkdf2PasswordEncoder();
+//
+//        String s = encoder.encode(user.getPassword());
+//        user.setPassword(s);
+//
+//        return userRepository.save(user);
+//    }
 
 }
