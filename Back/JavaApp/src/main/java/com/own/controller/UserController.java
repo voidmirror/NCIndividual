@@ -7,6 +7,8 @@ import com.own.repository.UserRepository;
 import com.own.service.PBKDF2Hasher;
 import com.own.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,17 +24,19 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+//    @PreAuthorize(value = "USER")
     @GetMapping("/all")
     public List<User> retrieveAllUsers() {
         return userRepository.findAll();
     }
 
-//    @PostMapping("/add")
-//    public void addUser(@RequestBody User user) throws UserLoginAlreadyExistsException {
-//        System.out.println(user);
-//        userService.signUp(user);
-////        userRepository.save(user);
-//    }
+    @PostMapping(value = "/add", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public void addUser(@RequestBody User user) throws UserLoginAlreadyExistsException {
+        System.out.println(user);
+        userService.signUp(user);
+//        userRepository.save(user);
+        System.out.println(userRepository.findByUsername(user.getUsername()));
+    }
 
 //    @PostMapping("/login")
 //    public void loginUser(@RequestBody User user) throws UserNotFoundException {

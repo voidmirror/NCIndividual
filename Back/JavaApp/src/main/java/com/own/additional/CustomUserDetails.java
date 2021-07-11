@@ -1,5 +1,6 @@
 package com.own.additional;
 
+import com.own.entity.Role;
 import com.own.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -7,32 +8,42 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
 public class CustomUserDetails implements UserDetails {
 
     private String username;
     private String password;
-    private boolean active;
-    private List<GrantedAuthority> authorities;
+    private Collection<Role> roles;
+//    private Collection<GrantedAuthority> authorities;
 
     public CustomUserDetails(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
-        this.active = user.isActive();
-        this.authorities = Arrays.stream(user.getRoles().split(","))
-                .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
+        this.roles = user.getRoles();
+
+        //        this.authorities = Arrays.stream(user.getRoles().split(","))
+        //                .map(SimpleGrantedAuthority::new)
+        //                .collect(Collectors.toList());
     }
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+            List<GrantedAuthority> authorities
+                    = new ArrayList<>();
+            for (Role role: roles) {
+                authorities.add(new SimpleGrantedAuthority(role.getName()));
+                role.getPrivileges().stream()
+                        .map(p -> new SimpleGrantedAuthority(p.getName()))
+                        .forEach(authorities::add);
+            }
+
+            return authorities;
     }
 
     @Override
@@ -62,6 +73,6 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return active;
+        return true;
     }
 }

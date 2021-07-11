@@ -1,16 +1,23 @@
 package com.own.entity;
 
+import com.own.repository.RoleRepository;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
+import java.util.Arrays;
 import java.util.Collection;
 
-@Entity
-@Table(name = "user", indexes = @Index(name = "lgn_index", columnList = "login"))
+@Entity(name = "User")
+@Table(name = "user", indexes = @Index(name = "user_username_index", columnList = "username", unique = true))
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Size(min = 2)
@@ -27,18 +34,20 @@ public class User {
 
     private String phoneNumber;
 
-    private boolean active;
+//    private boolean active;
 
-    private String roles;
+//    private String roles;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "users_roles",
-//            joinColumns = @JoinColumn(
-//                    name = "user_id", referencedColumnName = "id"),
-//            inverseJoinColumns = @JoinColumn(
-//                    name = "role_id", referencedColumnName = "id"))
-//    private Collection<Role> roles;
+    @ElementCollection
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private Collection<Role> roles;
 
     public int getId() {
         return id;
@@ -88,27 +97,27 @@ public class User {
         this.password = password;
     }
 
-//    public Collection<Role> getRoles() {
-//        return roles;
-//    }
-//
-//    public void setRoles(Collection<Role> roles) {
-//        this.roles = roles;
-//    }
-
-
-    public String getRoles() {
+    public Collection<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) {
+    public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
 
-    // TODO: getter-setter?
-    public boolean isActive() {
-        return active;
-    }
+
+//    public String getRoles() {
+//        return roles;
+//    }
+
+//    public void setRoles(String roles) {
+//        this.roles = roles;
+//    }
+
+//    // TODO: getter-setter?
+//    public boolean isActive() {
+//        return active;
+//    }
 
     @Override
     public String toString() {
@@ -119,7 +128,8 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", roles=" + roles +
+//                ", roles=" + Arrays.toString(roles.toArray()) +
+                ", roles=" + (roles == null ? "null" : Arrays.toString(roles.toArray())) +
                 '}';
     }
 }
