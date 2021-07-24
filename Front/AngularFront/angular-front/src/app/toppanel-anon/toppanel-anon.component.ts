@@ -18,7 +18,12 @@ export class ToppanelAnonComponent implements OnInit {
   }
 
   redirectToProfile(): void {
+    console.log('navigating');
     this.router.navigate(['profile']);
+  }
+
+  redirectToFeedback(): void {
+    this.router.navigate(['feedback']);
   }
 
 }

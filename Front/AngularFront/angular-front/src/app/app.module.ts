@@ -15,6 +15,10 @@ import { AddwareFormComponent } from './addware-form/addware-form.component';
 import { AdduserFormComponent } from './adduser-form/adduser-form.component';
 import { ToppanelAnonComponent } from './toppanel-anon/toppanel-anon.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CurrentUser } from './current-user';
+import { ContactsComponent } from './contacts/contacts.component';
+import { TmptestComponent } from './tmptest/tmptest.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,10 @@ import { ProfileComponent } from './profile/profile.component';
     AddwareFormComponent,
     AdduserFormComponent,
     ToppanelAnonComponent,
-    ProfileComponent
+    ProfileComponent,
+    ContactsComponent,
+    TmptestComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,10 @@ import { ProfileComponent } from './profile/profile.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [PositionService],
+  providers: [
+    PositionService,
+    CurrentUser
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

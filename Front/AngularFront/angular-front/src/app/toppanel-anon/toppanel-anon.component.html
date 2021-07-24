@@ -1,4 +1,4 @@
-<ul class="toppanel-anon">
+<!-- <ul class="toppanel-anon">
     <li *ngFor="let item of toppanelAnon">
         <span *ngIf="item.name == 'Корзина'">
             {{item.name}} ({{num}})
@@ -8,4 +8,16 @@
         </span>
         <span *ngIf="item.name != 'Корзина' && item.name != 'Профиль'">{{item.name}}</span>
     </li>
-</ul>
+</ul> -->
+
+
+<div class="toppanel">
+    <nav>
+        <ul>
+            <li (click)="redirectToFeedback()">Помощь</li>
+            <li>Отслеживание заказов</li>
+            <li (click)="redirectToProfile()">Профиль</li>
+            <li>Корзина ({{num}})</li>
+        </ul>
+    </nav>
+</div>

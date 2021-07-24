@@ -1,4 +1,11 @@
+.window {
+    align-content: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
 .card-list {
+    left: 30%;
     position: absolute;
     display: flex;
     flex-wrap: wrap;

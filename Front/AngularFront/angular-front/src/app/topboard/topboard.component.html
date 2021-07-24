@@ -1,5 +1,5 @@
 <!-- <p>topboard works!</p> -->
-<ul class="topbar-menu">
+<!-- <ul class="topbar-menu">
     <li *ngFor="let menuitem of menuitems">
         <span *ngIf="menuitem.name != 'Категории'">{{menuitem.name}}</span>
         <span *ngIf="menuitem.name == 'Категории'">
@@ -9,4 +9,39 @@
             </select>
         </span>
     </li>
-</ul>
+
+    
+</ul> -->
+
+<!-- <div class="topbar-menu">
+    <span (click)="redirectToMain()">Главная</span>
+    <span>
+        <select>
+            <option>Категории:</option>
+            <option *ngFor="let categ of categories">{{categ.name}}</option>
+        </select>
+    </span>
+    <span>Летний отдых</span>
+    <span>Распродажа</span>
+    <span (click)="redirectToContacts()">Контакты</span>
+</div> -->
+
+<div class="topbar-menu">
+    <nav>
+        <ul>
+            <li (click)="redirectToMain()">Главная</li>
+            <li>Категории
+
+                <ul>
+                    <li>Футбол</li>
+                    <li>Воллейбол</li>
+                    <li>Хоккей</li>
+                </ul>
+                
+            </li>
+            <li>Летний отдых</li>
+            <li>Распродажа</li>
+            <li (click)="redirectToContacts()">Контакты</li>
+        </ul>
+    </nav>
+</div>

@@ -1,0 +1,17 @@
+<p>feedback works!</p>
+<form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" name="form">
+    <div>
+        <p>
+            <label>Фамилия, Имя</label>
+            <input name="name" type="text" formControlName="name">
+        </p>
+        <p>
+            <input name="feedbackText" type="password" formControlName="feedbackText">
+        </p>
+        <p>
+            <button type="submit">
+                Отправить отзыв
+            </button>
+        </p>
+    </div>
+</form>

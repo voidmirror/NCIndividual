@@ -24,7 +24,7 @@ export class ProductCatalogComponent implements OnInit {
       this.positions = data;
     });
     console.log(this.positions);
-    // this.positions = this.listPos.getPositions();
+    this.positions = this.listPos.getPositions();
   }
   
   
