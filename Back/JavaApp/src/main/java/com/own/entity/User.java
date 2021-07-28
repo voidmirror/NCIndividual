@@ -13,11 +13,11 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @Entity(name = "User")
-@Table(name = "user", indexes = @Index(name = "user_username_index", columnList = "username", unique = true))
+@Table(name = "user", indexes = @Index(name = "user_username_index", columnList = "username"))
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Size(min = 2)

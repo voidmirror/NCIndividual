@@ -23,7 +23,7 @@ export class ProductCatalogComponent implements OnInit {
     this.positionService.retrieveAllPositions().subscribe(data => {
       this.positions = data;
     });
-    console.log(this.positions);
+    // console.log(this.positions);
     this.positions = this.listPos.getPositions();
   }
   

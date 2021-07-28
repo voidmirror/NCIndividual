@@ -7,11 +7,11 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity(name = "Role")
-@Table(name = "role", indexes = @Index(name = "role_name_index", columnList = "name", unique = true))
+@Table(name = "role", indexes = @Index(name = "role_name_index", columnList = "name"))
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;

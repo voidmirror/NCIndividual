@@ -14,3 +14,7 @@ nav ul li {
     background: linear-gradient(to bottom, #7C07A9, white 150%);
     cursor: default;
 }
+
+div {
+    text-align: right;
+}

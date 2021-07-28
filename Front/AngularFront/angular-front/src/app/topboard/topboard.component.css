@@ -1,8 +1,10 @@
-ul.topbar-menu {
+/* ul.topbar-menu {
     margin: 0;
     margin-bottom: 30px;
     padding: 4px;
     text-align: center;
+    position: relative;
+    
 }
 ul.topbar-menu li {
     display: inline;
@@ -12,14 +14,15 @@ ul.topbar-menu li {
     border-right: 1px solid rgb(165, 165, 165);
     font-size: larger;
     background-color: blue;
+    position: absolute;
+    z-index: 100;
 }
 
 .topbar-menu {
     margin: 30px;
-    /* margin: 10 0px 0; */
     padding: 4px;
     
-}
+} */
 
 /* .topbar-menu span {
     display: inline;
@@ -42,6 +45,11 @@ ul.topbar-menu li {
     cursor: default;
 } */
 
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+ }
+
 nav ul {
     text-align: center;
     list-style: none;
@@ -57,30 +65,25 @@ nav ul li {
     border-left: 1px solid rgb(165, 165, 165);
     border-right: 1px solid rgb(165, 165, 165);
     font-size: larger;
-    background-color: blue;
-    background: linear-gradient(to bottom, #6749D7, white 150%);
+    
 }
+/* background-color: blue;
+    background: linear-gradient(to bottom, #6749D7, white 150%); */
 
 nav ul li:hover {
-    /* display: inline-block;
-    padding: 10px;
-    border-left: 1px solid rgb(165, 165, 165);
-    border-right: 1px solid rgb(165, 165, 165);
-    font-size: larger;
-    background-color: blue; */
-    background: linear-gradient(to bottom, #856Fd7, white 150%);
+    
     cursor: default;
 }
-
-nav ul ul {
+/* background: linear-gradient(to bottom, #856Fd7, white 150%); */
+/* 
+/* nav ul ul {
     display: none;
     position: absolute;
     top: 100%;
-}
+} */ */
 
 nav ul li:hover > ul {
     display: list-item;
-    /* left: 70%; */
 }
 
 nav ul ul li {
@@ -88,26 +91,22 @@ nav ul ul li {
     z-index: 1;
     float: none;
     position: relative;
-    /* margin-left: 5px; */
     padding: 10px;
     border-left: 1px solid rgb(165, 165, 165);
     border-right: 1px solid rgb(165, 165, 165);
     font-size: larger;
-    background-color: blue;
-    background: linear-gradient(to bottom, #6749D7, white 150%);
+    
 }
+/* background-color: blue;
+    background: linear-gradient(to bottom, #6749D7, white 150%); */
 
 nav ul ul li:hover {
+    z-index: auto;
     
-    /* padding: 10px;
-    border-left: 1px solid rgb(165, 165, 165);
-    border-right: 1px solid rgb(165, 165, 165);
-    font-size: larger;
-    background-color: blue; */
-    background: linear-gradient(to bottom, #856Fd7, white 150%);
     cursor: default;
 }
+/* background: linear-gradient(to bottom, #856Fd7, white 150%); */
 
-
-/* display: inline; */
-    /* margin-left: 5px; */
+li {
+    cursor: default;
+}

@@ -20,7 +20,7 @@ export class PositionListComponent implements OnInit {
   }
 
   public getPositions(): Position[] {
-    console.log(this.positions)
+    // console.log(this.positions)
     return this.positions;
   }
 

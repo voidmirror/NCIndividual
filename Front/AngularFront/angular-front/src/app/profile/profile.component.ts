@@ -8,7 +8,11 @@ import { CurrentUser } from '../current-user';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(public currentUser: CurrentUser) {}
+  // currentUser: CurrentUser;
+
+  constructor(public currentUser: CurrentUser) {
+    // this.currentUser = currentUserNow.getInstance();
+  }
 
   ngOnInit(): void {
   }

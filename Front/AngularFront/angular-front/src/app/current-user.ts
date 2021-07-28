@@ -3,34 +3,56 @@ import { Injectable } from '@angular/core'
 @Injectable()
 
 export class CurrentUser {
-    private name!: string;
-    private email!: string;
-    private phoneNumber!: string;
+    static uname: string;
+    static email: string;
+    static phoneNumber: string;
 
     constructor() {
     }
 
-    public getName() {
-        return this.name;
+    // public getName() {
+    //     return this.uname;
+    // }
+
+    // public getEmail() {
+    //     return this.email;
+    // }
+
+    // public getPhoneNumber() {
+    //     return this.phoneNumber;
+    // }
+
+    // public setName(name: string) {
+    //     this.name = name;
+    // }
+
+    // public setEmail(email: string) {
+    //     this.email = email;
+    // }
+
+    // public setPhoneNumber(phoneNumber: string) {
+    //     this.phoneNumber = phoneNumber;
+    // }
+
+    public print(): void {
+        console.log(CurrentUser.uname);
+        console.log(CurrentUser.email);
+        console.log(CurrentUser.phoneNumber);
     }
 
-    public getEmail() {
-        return this.email;
+    get staticName() {
+        return CurrentUser.uname;
     }
 
-    public getPhoneNumber() {
-        return this.phoneNumber;
+    get staticEmail() {
+        return CurrentUser.uname;
     }
 
-    public setName(name: string) {
-        this.name = name;
+    get staticPhoneNumber() {
+        return CurrentUser.uname;
     }
 
-    public setEmail(email: string) {
-        this.email = email;
-    }
-
-    public setPhoneNumber(phoneNumber: string) {
-        this.phoneNumber = phoneNumber;
+    public getInstance(): CurrentUser {
+        return this;
     }
 }

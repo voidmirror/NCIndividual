@@ -62,6 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 //                .antMatchers("/rest/v1/users/**").hasRole("ADMIN")
 //                .antMatchers("/rest/v1/**").hasRole("USER")
                 .antMatchers("rest/v1/positions").permitAll()
+                .antMatchers("/rest/v1/users/add").permitAll()
                 .antMatchers("/rest/v1/users/*").hasRole("USER")
                 .antMatchers("/").hasAnyRole("ADMIN", "USER")
 
@@ -94,7 +95,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
                 PrintWriter writer = httpServletResponse.getWriter();
 
-                mapper.writeValue(writer, user.getRoles());
+                mapper.writeValue(writer, user);
 
                 writer.flush();
             }

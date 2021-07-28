@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { User } from './User';
+import { CurrentUser } from './current-user';
 
 @Injectable({
   providedIn: 'root'
@@ -63,14 +64,23 @@ export class UserService {
     // }
 
     let result: Object;
-    result = new Object();
+    result = new Object() as User;
     this.http.post(this.usersLoginUrl, body, /*{headers: headers}*/ httpOptions).subscribe((res) => {
         result = res;
+        let resUser = res as User;
+        CurrentUser.uname = resUser.name;
+        CurrentUser.email = resUser.email;
+        CurrentUser.phoneNumber = resUser.phoneNumber;
         console.log('Hello from LOGIN');
         console.log(result);
-        console.log('HEYYY')
+        console.log('HEYYY');
+        console.log(CurrentUser.uname);
+        
+        return res;
       });
 
+    // console.log(result);
+    console.log('HERE');
     return result;
   }
 

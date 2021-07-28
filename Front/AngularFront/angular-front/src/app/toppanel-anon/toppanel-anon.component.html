@@ -16,8 +16,9 @@
         <ul>
             <li (click)="redirectToFeedback()">Помощь</li>
             <li>Отслеживание заказов</li>
-            <li (click)="redirectToProfile()">Профиль</li>
+            <li (click)="redirectToSignOrProfile()" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">{{btnProfileValue}}</li>
             <li>Корзина ({{num}})</li>
         </ul>
     </nav>
+    
 </div>

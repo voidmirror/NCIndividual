@@ -19,6 +19,7 @@ import { CurrentUser } from './current-user';
 import { ContactsComponent } from './contacts/contacts.component';
 import { TmptestComponent } from './tmptest/tmptest.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [
     PositionService,
