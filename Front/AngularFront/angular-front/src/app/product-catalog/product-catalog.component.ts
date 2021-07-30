@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BasketService } from '../basket.service';
 import { ListPositions } from '../list-positions';
 import { Position } from '../Position'
 import { PositionListComponent } from '../position-list/position-list.component';
@@ -14,7 +15,7 @@ export class ProductCatalogComponent implements OnInit {
   listPos: PositionListComponent;
   positions: Position[];
 
-  constructor(private positionService: PositionService) {
+  constructor(private positionService: PositionService, private basketService: BasketService) {
     this.listPos = new PositionListComponent(positionService);
     this.positions = this.listPos.getPositions();
    }
@@ -27,6 +28,9 @@ export class ProductCatalogComponent implements OnInit {
     this.positions = this.listPos.getPositions();
   }
   
+  addToBasket(pos: Position): void {
+    this.basketService.addPosition(pos);
+  }
   
 
 }

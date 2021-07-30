@@ -38,8 +38,7 @@ public class User {
 
 //    private String roles;
 
-    @ElementCollection
-    @LazyCollection(LazyCollectionOption.FALSE)
+//    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany
     @JoinTable(
             name = "users_roles",

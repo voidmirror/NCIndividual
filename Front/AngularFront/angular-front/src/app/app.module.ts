@@ -20,6 +20,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { TmptestComponent } from './tmptest/tmptest.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BasketComponent } from './basket/basket.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProfileComponent,
     ContactsComponent,
     TmptestComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    BasketComponent
   ],
   imports: [
     BrowserModule,

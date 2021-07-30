@@ -62,12 +62,19 @@
             <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Категории
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" container="body" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">Футбол</a></li>
               <li><a class="dropdown-item" href="#">Воллейбол</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Хоккей</a></li>
             </ul>
+          </li>
+          <li>
+            <div ngbDropdown container="body" class="d-inline-block">
+              <a class="dropdown-item" href="#">Футбол</a>
+              <a class="dropdown-item" href="#">Воллейбол</a>
+              <a class="dropdown-item" href="#">Хоккей</a>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Распродажа</a>
