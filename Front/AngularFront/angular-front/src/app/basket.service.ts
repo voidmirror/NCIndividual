@@ -13,7 +13,12 @@ export class BasketService {
   constructor(private http: HttpClient) { }
 
   public addPosition(position: Position) {
-    this.basket.push(new BasketPosition(position));
+    let found = this.getPos(position.id);
+    if (found == undefined) {
+      this.basket.push(new BasketPosition(position, this.http));
+    } else {
+      found.increaseNum();
+    }
   }
 
   private getPos(id: number): BasketPosition {
