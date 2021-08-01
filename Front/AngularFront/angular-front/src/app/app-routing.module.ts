@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddwareFormComponent } from './addware-form/addware-form.component';
 import { BasketComponent } from './basket/basket.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { FeedbackComponent } from './feedback/feedback.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'contacts', component: ContactsComponent },
   { path: 'feedback', component: FeedbackComponent },
   { path: 'basket', component: BasketComponent },
+  { path: 'addware', component: AddwareFormComponent },
   { path: '', component: ProductCatalogComponent }
 ];
 

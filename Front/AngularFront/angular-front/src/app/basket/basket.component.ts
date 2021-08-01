@@ -16,6 +16,15 @@ export class BasketComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+  public countSum(): number {
+    let sum = 0;
+    for (let item of this.basketService.basket) {
+      sum += item.price;
+    }
+    
+    console.log('sum log ' + sum);
+    
+    return sum;
+  }
 
 }

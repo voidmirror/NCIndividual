@@ -16,6 +16,8 @@ public class BasketController {
 
     @PostMapping(value = "/calculate", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public double calculateBasketPrice(@RequestBody BasketPosition basketPosition) {
+        System.out.println("INSIDE BASKET CONTROLLER");
+        System.out.println(basketPosition);
         return basketService.calculatePrice(basketPosition);
     }
 

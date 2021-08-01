@@ -6,7 +6,7 @@ export class BasketPosition {
     num: number;
     pos: Position;
 
-    calcUrl = 'https://localhost:8443/rest/v1/basket/calcuate';
+    calcUrl = 'https://localhost:8443/rest/v1/basket/calculate';
 
 
 
@@ -28,8 +28,12 @@ export class BasketPosition {
             "num": this.num,
             "pos": this.pos
         }
+        console.log(data);
         
-        this.http.post(this.calcUrl, data);
+        this.http.post(this.calcUrl, data).subscribe((res) => {
+            this.price = res as number;
+        })
+
 
     }
 
@@ -40,7 +44,7 @@ export class BasketPosition {
 
     public decreaseNum() {
         // If num == 0 ---> disable button
-        if (this.num > 0) {
+        if (this.num > 1) {
             this.num -= 1;
         }
         this.calculatePrice();

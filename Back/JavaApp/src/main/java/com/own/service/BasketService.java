@@ -13,6 +13,7 @@ public class BasketService {
 
     // Possibly add new features like sales or promo codes
     public double calculatePrice(BasketPosition basketPosition) {
+        System.out.println(basketPosition.getNum() * basketPosition.getPos().getPrice());
         return basketPosition.getNum() * basketPosition.getPos().getPrice();
     }
 

@@ -1,9 +1,11 @@
 <p>basket works!</p>
-<!-- <div *ngFor="let pos of basketService.basket"> -->
+<!-- {{basketService.basket}} -->
+<div *ngFor="let item of basketService.basket">
     <div>
-        <!-- {{pos.pos.name}}: {{pos.pos.price}} -->
+        {{item.pos.name}}: {{item.pos.price}} ({{item.num}})
         something
-        <button (click)="pos.increaseNum()">+</button> | <button (click)="pos.decreaseNum()">-</button>
+        <button (click)="item.increaseNum()">+</button> | <button (click)="item.decreaseNum()">-</button> | <button (click)="basketService.deleteItem(item.pos.id)">X</button>
         <!-- <button >+</button> | <button >-</button> -->
     </div>
-<!-- </div> -->
+</div>
+<div>Basket sum: {{countSum()}}</div>
