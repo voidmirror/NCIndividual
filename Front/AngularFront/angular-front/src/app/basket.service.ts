@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BasketPosition } from './BasketPosition';
 import { Position } from './Position';
+// import { OnInit, OnChanges } from '@angular/core';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +13,27 @@ export class BasketService {
 
   basket: BasketPosition[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    console.log('BASKETSERVICE INITIATING');
+    
+    if (localStorage.getItem('MySportStoreBasket') != null) {
+      let copy: BasketPosition[] = JSON.parse(localStorage.getItem('MySportStoreBasket') as string);
+      for (let item of copy) {
+        this.addPosition(item.pos)
+        this.getPos(item.pos.id).setNum(item.num);
+        
+        // item.calculatePrice();
+      }
+    }
+   }
+
+  // ngOnInit(): void {
+  //   console.log('BASKETSERVICE INITIATING');
+    
+  //   if (localStorage.getItem('MySportStoreBasket') != null) {
+  //     this.basket = JSON.parse(localStorage.getItem('MySportStoreBasket') as string);
+  //   }
+  // }
 
   public addPosition(position: Position) {
     console.log('INSIDE ADD POSITION TO BUSKET');
@@ -23,6 +46,7 @@ export class BasketService {
     } else {
       found.increaseNum();
     }
+    localStorage.setItem('MySportStoreBasket', JSON.stringify(this.basket));
     // console.log(this.basket);
     
   }
@@ -61,6 +85,7 @@ export class BasketService {
       if (id === item.pos.id) {
         this.basket.splice(this.basket.indexOf(item), 1);
         console.log(this.basket);
+        localStorage.setItem('MySportStoreBasket', JSON.stringify(this.basket));
         break;
       }
     }

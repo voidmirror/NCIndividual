@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
 import { BasketService } from '../basket.service';
 import { BasketPosition } from '../BasketPosition';
 
@@ -7,13 +7,16 @@ import { BasketPosition } from '../BasketPosition';
   templateUrl: './basket.component.html',
   styleUrls: ['./basket.component.css']
 })
-export class BasketComponent implements OnInit {
-
-  
+export class BasketComponent implements OnInit, OnDestroy {
 
   constructor(public basketService: BasketService) { }
 
   ngOnInit(): void {
+    
+  }
+
+  ngOnDestroy(): void {
+    localStorage.setItem('MySportStoreBasket', JSON.stringify(this.basketService.basket));
   }
 
   public countSum(): number {

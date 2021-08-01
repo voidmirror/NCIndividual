@@ -42,6 +42,11 @@ export class BasketPosition {
         this.calculatePrice()
     }
 
+    public setNum(num: number): void {
+        this.num = num;
+        this.calculatePrice()
+    }
+
     public decreaseNum() {
         // If num == 0 ---> disable button
         if (this.num > 1) {
