@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
+
 import { TopboardComponent } from './topboard/topboard.component';
 import { ProductCatalogComponent } from './product-catalog/product-catalog.component';
 import { PositionListComponent } from './position-list/position-list.component';
@@ -21,11 +21,12 @@ import { TmptestComponent } from './tmptest/tmptest.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BasketComponent } from './basket/basket.component';
+import { ProductItemComponent } from './product-item/product-item.component';
+import { PositionDetailsComponent } from './position-details/position-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShoppingItemComponent,
     TopboardComponent,
     ProductCatalogComponent,
     PositionListComponent,
@@ -37,7 +38,9 @@ import { BasketComponent } from './basket/basket.component';
     ContactsComponent,
     TmptestComponent,
     FeedbackComponent,
-    BasketComponent
+    BasketComponent,
+    ProductItemComponent,
+    PositionDetailsComponent
   ],
   imports: [
     BrowserModule,

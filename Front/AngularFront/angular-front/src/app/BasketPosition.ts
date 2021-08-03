@@ -1,4 +1,5 @@
 import { HttpClient } from "@angular/common/http";
+import { BasketService } from "./basket.service";
 import { Position } from "./Position";
 
 export class BasketPosition {
@@ -8,7 +9,7 @@ export class BasketPosition {
 
     calcUrl = 'https://localhost:8443/rest/v1/basket/calculate';
 
-
+    // , private basketService: BasketService
 
     constructor (position: Position, private http: HttpClient) {
         this.num = 1;
@@ -39,7 +40,8 @@ export class BasketPosition {
 
     public increaseNum() {
         this.num += 1;
-        this.calculatePrice()
+        this.calculatePrice();
+        // this.basketService.backupBasket();
     }
 
     public setNum(num: number): void {
@@ -53,6 +55,7 @@ export class BasketPosition {
             this.num -= 1;
         }
         this.calculatePrice();
+        // this.basketService.backupBasket();
     }
 
 }

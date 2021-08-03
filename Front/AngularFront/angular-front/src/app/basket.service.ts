@@ -47,8 +47,13 @@ export class BasketService {
       found.increaseNum();
     }
     localStorage.setItem('MySportStoreBasket', JSON.stringify(this.basket));
+    // this.backupBasket();
     // console.log(this.basket);
     
+  }
+
+  backupBasket(): void {
+    localStorage.setItem('MySportStoreBasket', JSON.stringify(this.basket));
   }
 
   private getPos(id: number): BasketPosition {
@@ -86,6 +91,7 @@ export class BasketService {
         this.basket.splice(this.basket.indexOf(item), 1);
         console.log(this.basket);
         localStorage.setItem('MySportStoreBasket', JSON.stringify(this.basket));
+        // this.backupBasket();
         break;
       }
     }

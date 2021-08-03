@@ -21,6 +21,10 @@ export class AddwareFormComponent implements OnInit {
     description: new FormControl()
   });
 
+  deleteWareForm = new FormGroup({
+    id: new FormControl()
+  });
+
   constructor(/*private http: HttpService*/ /*private client: HttpClient*/ private positionService: PositionService) {
     
    }
@@ -28,7 +32,7 @@ export class AddwareFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(): void {
+  onAddSubmit(): void {
     // console.log(this.addWareForm.value);
     let pos = new Position(this.addWareForm.value.name, this.addWareForm.value.price, this.addWareForm.value.description);
     
@@ -38,6 +42,20 @@ export class AddwareFormComponent implements OnInit {
     }))
     console.log(save);
     console.log(pos);
+    
+  }
+
+  onDeleteSubmit(): void {
+    
+    
+      this.positionService.getPositionById(this.deleteWareForm.value.id).subscribe(data => {
+        console.log(data);
+        this.positionService.deletePosition(data);
+        console.log('after');
+        
+      }, (error) => console.log('ID not found'));
+
+      // this.positionService.deletePosition(pp)
     
   }
 

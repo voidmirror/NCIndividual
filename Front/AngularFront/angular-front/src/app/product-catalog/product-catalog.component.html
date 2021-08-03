@@ -1,13 +1,13 @@
 <!-- <p>product-catalog works!</p> -->
 
-<div class="window">
+<div class="window" style="margin-top:200px; overflow-y: scroll;">
     <div class="card-list">
-        <ul class="item-card" *ngFor="let pos of positions">
-            <li>
+        <!-- <ul class="item-card" *ngFor="let pos of positions">
+            <li> -->
                 <!-- <div class="item-card-component">
                     <img [src]="pos.imagePath">
                 </div> -->
-                <div class="item-card-component">
+                <!-- <div class="item-card-component">
                     <p>
                         id: {{pos.id}}
                     </p>
@@ -22,6 +22,14 @@
                     </p>
                     <button type="button" (click)="addToBasket(pos)" class="btn btn-outline-primary">Add to basket</button>
                 </div>
+            </li>
+        </ul> -->
+
+
+
+        <ul *ngFor="let some of positions">
+            <li class="item-card">
+                <app-product-item [pos]="some"></app-product-item>
             </li>
         </ul>
     </div>

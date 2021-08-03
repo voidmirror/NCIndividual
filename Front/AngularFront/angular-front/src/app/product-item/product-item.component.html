@@ -1,0 +1,26 @@
+<ng-template #details let-modal>
+    <app-position-details [pos]="pos"></app-position-details>
+</ng-template>
+
+<div class="item-card">
+    <!-- <p>
+        id: {{pos.id}}
+    </p> -->
+    <p>
+        name: {{pos.name}}
+    </p>
+    <p>
+        price: {{pos.price}}
+    </p>
+    <!-- <p>
+        description: {{pos.description}}
+    </p> -->
+    <div style="display:inline-block;">
+        <button type="button" (click)="addToBasket(pos)" class="btn btn-outline-primary">Добавить в корзину</button>
+        <button type="button" (click)="openPopup(details)" class="btn btn-outline-primary">Подробнее</button>
+        <button type="button" class="btn btn-outline-danger">Edit</button>
+        <button type="button" class="btn btn-outline-danger">Delete</button>
+    </div>
+</div>
+
+<!-- (click)="openPopup()" -->

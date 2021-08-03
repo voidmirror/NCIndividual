@@ -22,12 +22,26 @@ export class PositionService {
     return this.http.get<Position[]>(this.positionsUrl);
   }
 
-  public getPosition3Id(): Observable<Position[]> {
-    return this.http.get<Position[]>(this.positionsUrl3)
+  public getPositionById(id: number): Observable<Position> {
+    return this.http.get<Position>(this.positionsUrl + '/' + id)
   }
 
   public savePosition(position: Position) {
     console.log('save function', position)
     return this.http.post<Position>(this.positionsUrl, position);
+  }
+
+  public deletePosition(position: Position) {
+    console.log('delete function', position);
+    console.log(this.positionsUrl);
+    
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: position
+    }
+    return this.http.post<Position>(this.positionsUrl + '/delete', position).subscribe();
+    // return this.http.delete<Position>(this.positionsUrl, options);
   }
 }

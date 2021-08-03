@@ -39,4 +39,10 @@ public class PositionController {
         positionRepository.save(position);
     }
 
+    @PostMapping(value = "/positions/delete", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public void deletePosition(@RequestBody Position position) {
+        System.out.println(position);
+        positionRepository.delete(position);
+    }
+
 }
