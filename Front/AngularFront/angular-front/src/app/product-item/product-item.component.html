@@ -3,24 +3,27 @@
 </ng-template>
 
 <div class="item-card">
-    <!-- <p>
-        id: {{pos.id}}
-    </p> -->
-    <p>
-        name: {{pos.name}}
-    </p>
-    <p>
-        price: {{pos.price}}
-    </p>
-    <!-- <p>
-        description: {{pos.description}}
-    </p> -->
-    <div style="display:inline-block;">
-        <button type="button" (click)="addToBasket(pos)" class="btn btn-outline-primary">Добавить в корзину</button>
-        <button type="button" (click)="openPopup(details)" class="btn btn-outline-primary">Подробнее</button>
-        <button type="button" class="btn btn-outline-danger">Edit</button>
-        <button type="button" class="btn btn-outline-danger">Delete</button>
+    <div class="form-check" style="z-index: 1;position: absolute;">
+        <input class="form-check-input position-static" [(ngModel)]="isSelected" type="checkbox" id="blankCheckbox" value="isSelected" aria-label="...">
     </div>
+    <div>
+        
+        <div>
+            
+            <p>
+                name: {{pos.name}}
+            </p>
+            <p>
+                price: {{pos.price}} р.
+            </p>
+        </div>
+
+        <div style="display:inline-block;">
+            <button *ngIf="isInCatalog == true" type="button" (click)="addToBasket(pos)" class="btn btn-outline-primary">Добавить в корзину</button>
+            <button type="button" (click)="openPopup(details)" class="btn btn-outline-primary">Подробнее</button>
+        </div>
+    </div>
+    
 </div>
 
 <!-- (click)="openPopup()" -->

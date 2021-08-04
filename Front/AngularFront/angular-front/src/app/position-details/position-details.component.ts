@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Position } from '../Position';
+import { PositionService } from '../position-service.service';
 import { UserService } from '../user-service.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class PositionDetailsComponent implements OnInit {
 
   @Input() pos!: Position;
 
-  constructor(userService: UserService) { }
+  constructor(private positionService: PositionService) { }
 
   ngOnInit(): void {
   }

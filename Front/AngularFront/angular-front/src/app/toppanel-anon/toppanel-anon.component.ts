@@ -3,6 +3,7 @@ import { TOPPANEL_ANON } from '../list-menu';
 import { Router } from '@angular/router';
 import { CurrentUser } from '../current-user';
 import { BasketService } from '../basket.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-toppanel-anon',
@@ -16,7 +17,10 @@ export class ToppanelAnonComponent implements OnInit {
   num = 0;
   btnProfileValue = '';
 
-  constructor(private router: Router, public currentUser: CurrentUser, public basketService: BasketService) { }
+  constructor(private router: Router, 
+    public currentUser: CurrentUser, 
+    public basketService: BasketService,
+    private modalService: NgbModal) { }
 
   ngOnInit(): void {
     
@@ -36,6 +40,10 @@ export class ToppanelAnonComponent implements OnInit {
     } else {
       this.btnProfileValue = CurrentUser.uname;
     }
+  }
+
+  public openPopup(content: any) {
+    const modalRef = this.modalService.open(content);
   }
 
   redirectToSignOrProfile(): void {

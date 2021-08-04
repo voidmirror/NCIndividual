@@ -23,6 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BasketComponent } from './basket/basket.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { PositionDetailsComponent } from './position-details/position-details.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { PositionDetailsComponent } from './position-details/position-details.co
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [
     PositionService,

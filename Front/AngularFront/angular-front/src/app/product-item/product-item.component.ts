@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BasketService } from '../basket.service';
 import { Position } from '../Position';
@@ -11,10 +11,11 @@ import { Position } from '../Position';
 export class ProductItemComponent implements OnInit {
 
   @Input() pos!: Position;
+  @Input() isInCatalog: boolean = false;
+  @Input() isSelected: boolean = false;
 
   constructor(private basketService: BasketService,
               private modalService: NgbModal) {
-    // this.pos = pos;
    }
 
   ngOnInit(): void {

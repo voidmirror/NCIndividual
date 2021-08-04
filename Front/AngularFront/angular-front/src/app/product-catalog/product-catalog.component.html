@@ -2,34 +2,13 @@
 
 <div class="window" style="margin-top:200px; overflow-y: scroll;">
     <div class="card-list">
-        <!-- <ul class="item-card" *ngFor="let pos of positions">
-            <li> -->
-                <!-- <div class="item-card-component">
-                    <img [src]="pos.imagePath">
-                </div> -->
-                <!-- <div class="item-card-component">
-                    <p>
-                        id: {{pos.id}}
-                    </p>
-                    <p>
-                        name: {{pos.name}}
-                    </p>
-                    <p>
-                        price: {{pos.price}}
-                    </p>
-                    <p>
-                        description: {{pos.description}}
-                    </p>
-                    <button type="button" (click)="addToBasket(pos)" class="btn btn-outline-primary">Add to basket</button>
-                </div>
-            </li>
-        </ul> -->
-
-
-
+        
         <ul *ngFor="let some of positions">
             <li class="item-card">
-                <app-product-item [pos]="some"></app-product-item>
+                <app-product-item [pos]="some" [isInCatalog]="isInCatalog"></app-product-item>
+                <!-- <div class="form-check">
+                    <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                </div> -->
             </li>
         </ul>
     </div>

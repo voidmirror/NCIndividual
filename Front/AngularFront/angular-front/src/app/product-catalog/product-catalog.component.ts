@@ -14,6 +14,7 @@ export class ProductCatalogComponent implements OnInit {
 
   listPos: PositionListComponent;
   positions: Position[];
+  isInCatalog: boolean = true;
 
   constructor(private positionService: PositionService, private basketService: BasketService) {
     this.listPos = new PositionListComponent(positionService);

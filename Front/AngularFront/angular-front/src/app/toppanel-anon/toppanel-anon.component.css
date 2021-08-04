@@ -2,6 +2,7 @@ nav ul {
     text-align: right;
     list-style: none;
     position: relative;
+    
 }
 
 nav ul li {
@@ -12,7 +13,7 @@ nav ul li {
     /* font-size; */
     background-color: blue;
     background: linear-gradient(to bottom, #7C07A9, white 150%);
-    cursor: default;
+    cursor: pointer;
 }
 
 div {
