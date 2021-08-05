@@ -1,0 +1,38 @@
+<div class="col" style="margin: 20px;">
+    <!-- TODO: for each span add *ngIf -->
+    <!-- <p><input type="text" placeholder="{{pos.id}}" disabled></p>
+    <p>Имя товара: <input type="text" placeholder="{{pos.name}}"></p>
+    <p>Цена: <input type="text" placeholder="{{pos.price}}"></p>
+    <p>Описание: <input type="text" placeholder="{{pos.description}}"></p>
+
+    <button type="button" class="btn btn-outline-primary" (click)="editPosition()">Save</button>\ -->
+
+
+    <form [formGroup]="editWareForm" (ngSubmit)="editPosition()" name="form">
+        <h3>Add ware</h3>
+        <div>
+            <p>
+                <label>ID:</label>
+                <input name="name" type="text" placeholder="{{pos.id}}" formControlName="id" readonly>
+            </p>
+            <p>
+                <label>Имя товара:</label>
+                <input name="name" type="text" placeholder="{{pos.name}}" formControlName="name">
+            </p>
+            <p>
+                <label>Цена: </label>
+                <input name="price" type="text" placeholder="{{pos.price}}" formControlName="price">
+            </p>
+            <p>
+                <label>Описание: </label>
+                <input name="description" type="text" placeholder="{{pos.description}}" formControlName="description">
+            </p>
+            <p>
+                <button class="btn btn-outline-primary" type="submit">
+                    Сохранить изменения
+                </button>
+            </p>
+        </div>
+    </form>
+    
+</div>

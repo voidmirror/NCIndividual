@@ -4,23 +4,23 @@
     <div class="col">
         <div class="border-right">
         <form class="main-block" [formGroup]="addWareForm" (ngSubmit)="onAddSubmit()" name="form">
-            <h3>Add ware</h3>
+            <h3>Добавить товар</h3>
             <div>
                 <p>
-                    <label>Name</label>
+                    <label>Имя: </label>
                     <input name="name" type="text" formControlName="name">
                 </p>
                 <p>
-                    <label>Price</label>
+                    <label>Цена</label>
                     <input name="price" type="text" formControlName="price">
                 </p>
                 <p>
-                    <label>Description</label>
+                    <label>Описание: </label>
                     <input name="description" type="text" formControlName="description">
                 </p>
                 <p>
                     <button class="btn btn-primary" type="submit">
-                        Submit
+                        Добавить
                     </button>
                 </p>
             </div>
@@ -29,7 +29,7 @@
     </div>
     <div class="col">
         <form [formGroup]="deleteWareForm" (ngSubmit)="onDeleteSubmit()" name="form">
-            <h3>Delete</h3>
+            <h3>Удалить по ID</h3>
             <div>
                 <p>
                     <label>ID</label>
@@ -38,7 +38,7 @@
                 
                 <p>
                     <button class="btn btn-danger" type="submit">
-                        Delete
+                        Удалить
                     </button>
                 </p>
             </div>

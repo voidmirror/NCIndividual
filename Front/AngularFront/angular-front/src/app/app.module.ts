@@ -24,6 +24,7 @@ import { BasketComponent } from './basket/basket.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { PositionDetailsComponent } from './position-details/position-details.component';
 import { FormsModule } from '@angular/forms';
+import { EditwareFormComponent } from './editware-form/editware-form.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { FormsModule } from '@angular/forms';
     FeedbackComponent,
     BasketComponent,
     ProductItemComponent,
-    PositionDetailsComponent
+    PositionDetailsComponent,
+    EditwareFormComponent
   ],
   imports: [
     BrowserModule,

@@ -31,6 +31,10 @@ export class PositionService {
     return this.http.post<Position>(this.positionsUrl, position);
   }
 
+  public editPosition(position: Position) {
+    return this.http.put<Position>(this.positionsUrl, position).subscribe();
+  }
+
   public deletePosition(position: Position) {
     console.log('delete function', position);
     console.log(this.positionsUrl);

@@ -45,4 +45,12 @@ public class PositionController {
         positionRepository.delete(position);
     }
 
+    @PutMapping(value = "/positions", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public void editPosition(@RequestBody Position position) {
+        System.out.println(position);
+        System.out.println(positionRepository.findById(position.getId()));
+        positionRepository.save(position);
+        System.out.println(positionRepository.findById(position.getId()));
+    }
+
 }

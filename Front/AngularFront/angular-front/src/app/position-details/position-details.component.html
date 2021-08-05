@@ -1,9 +1,13 @@
+<ng-template #edit let-modal>
+    <app-editware-form [pos]="pos"></app-editware-form>
+</ng-template>
+
 <div class="col" style="margin: 20px;">
     <!-- TODO: for each span add *ngIf -->
     <p>ID: {{pos.id}}</p>
     <p>Имя товара: {{pos.name}}</p>
     <p>Цена: {{pos.price}} р.</p>
     <p>Описание: {{pos.description}}</p>
-    <button type="button" class="btn btn-outline-danger">Edit</button>
-    <button type="button" class="btn btn-outline-danger">Delete</button>
+    <button type="button" class="btn btn-outline-danger" (click)="openPopup(edit)">Редактировать</button>
+    <button type="button" class="btn btn-outline-danger">Удалить</button>
 </div>
