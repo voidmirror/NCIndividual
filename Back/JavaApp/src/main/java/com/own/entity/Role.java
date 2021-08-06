@@ -20,7 +20,7 @@ public class Role {
     private Collection<User> users;
 
 //    @ElementCollection
-//    @LazyCollection(LazyCollectionOption.FALSE)
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany
     @JoinTable(
             name = "roles_privileges",

@@ -3,9 +3,9 @@
 
     <div class="inner">
         /icon_profile/ Персональная информация
-        <p>Фамилия, Имя: {{currentUser.staticName}}</p>
-        <p>E-mail: {{currentUser.staticEmail}}</p>
-        <p>Телефон: {{currentUser.staticPhoneNumber}}</p>
+        <p>Фамилия, Имя: {{userService.currentUser.name}}</p>
+        <p>E-mail: {{userService.currentUser.email}}</p>
+        <p>Телефон: {{userService.currentUser.phoneNumber}}</p>
         <p><button>Изменить данные</button></p>
     </div>
 

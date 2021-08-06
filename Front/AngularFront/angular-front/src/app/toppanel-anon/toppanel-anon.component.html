@@ -17,7 +17,7 @@
 <div class="toppanel">
     <nav>
         <ul>
-            <li (click)=openPopup(addware)>Добавить товар</li>
+            <li *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" (click)=openPopup(addware)>Добавить товар</li>
             <li (click)="redirectToFeedback()">Помощь</li>
             <li>Отслеживание заказов</li>
             <li (click)="redirectToSignOrProfile()" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">{{btnProfileValue}}</li>

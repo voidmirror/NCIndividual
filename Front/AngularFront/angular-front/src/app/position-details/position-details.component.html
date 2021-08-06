@@ -8,6 +8,6 @@
     <p>Имя товара: {{pos.name}}</p>
     <p>Цена: {{pos.price}} р.</p>
     <p>Описание: {{pos.description}}</p>
-    <button type="button" class="btn btn-outline-danger" (click)="openPopup(edit)">Редактировать</button>
-    <button type="button" class="btn btn-outline-danger">Удалить</button>
+    <button *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" type="button" class="btn btn-outline-danger" (click)="openPopup(edit)">Редактировать</button>
+    <button *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" type="button" class="btn btn-outline-danger">Удалить</button>
 </div>

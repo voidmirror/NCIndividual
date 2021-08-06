@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CurrentUser } from '../current-user';
 import { BasketService } from '../basket.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from '../user-service.service';
 
 @Component({
   selector: 'app-toppanel-anon',
@@ -18,7 +19,7 @@ export class ToppanelAnonComponent implements OnInit {
   btnProfileValue = '';
 
   constructor(private router: Router, 
-    public currentUser: CurrentUser, 
+    public userService: UserService, 
     public basketService: BasketService,
     private modalService: NgbModal) { }
 
@@ -30,15 +31,18 @@ export class ToppanelAnonComponent implements OnInit {
     // } else {
     //   this.btnProfileValue = this.currentUser.getName();
     // }
+    console.log('ON INIT TOPPANEL');
     
     this.checkProfileButtonValue();
   }
 
   checkProfileButtonValue(): void {
-    if (CurrentUser.uname == undefined) {
+    if (this.userService.currentUser.name == undefined) {
+      console.log(this.userService.currentUser.name);
+      
       this.btnProfileValue = 'Sign In/Up';
     } else {
-      this.btnProfileValue = CurrentUser.uname;
+      this.btnProfileValue = this.userService.currentUser.name;
     }
   }
 

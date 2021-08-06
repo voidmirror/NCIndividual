@@ -13,7 +13,8 @@ export class UserService {
   private usersLoginUrl: string;
   private userSaveUrl: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+    public currentUser: CurrentUser) {
     this.usersUrl = 'https://localhost:8443/rest/v1/users';
     this.usersLoginUrl = 'https://localhost:8443/login';
     this.userSaveUrl = 'https://localhost:8443/rest/v1/users/add';
@@ -67,14 +68,22 @@ export class UserService {
     result = new Object() as User;
     this.http.post(this.usersLoginUrl, body, /*{headers: headers}*/ httpOptions).subscribe((res) => {
         result = res;
-        let resUser = res as User;
-        CurrentUser.uname = resUser.name;
-        CurrentUser.email = resUser.email;
-        CurrentUser.phoneNumber = resUser.phoneNumber;
+        let resUser = res as CurrentUser;
+        this.currentUser.name = resUser.name;
+        this.currentUser.email = resUser.email;
+        this.currentUser.phoneNumber = resUser.phoneNumber;
+        this.currentUser.username = resUser.username;
+        this.currentUser.roles = resUser.roles;
+
         console.log('Hello from LOGIN');
         console.log(result);
+        console.log(this.currentUser.findPrivilege("EDIT_CATALOG"));
+        
         console.log('HEYYY');
-        console.log(CurrentUser.uname);
+        console.log(this.currentUser.name);
+        this.currentUser.saveInStorage();
+        console.log('HEYYY');
+        console.log(JSON.parse(localStorage.getItem('MySportStoreCurrentUser') as string) as CurrentUser);
         
         return res;
       });

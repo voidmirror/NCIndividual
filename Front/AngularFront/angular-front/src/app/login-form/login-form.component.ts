@@ -47,11 +47,12 @@ export class LoginFormComponent implements OnInit {
     // this.currentUser.setPhoneNumber(logged.phoneNumber);
     
     console.log('current user start');    
-    console.log(CurrentUser.email);
+    console.log(this.userService.currentUser.email);
     console.log('current user stop');
     console.log(logged);
     console.log(response);
-    this.router.navigate(['']);
+    this.router.navigate(['/']);
+    // location.reload();
   }
 
   onSubmitAuthenticate(): void {

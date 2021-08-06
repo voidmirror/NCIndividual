@@ -14,7 +14,8 @@ export class PositionDetailsComponent implements OnInit {
   @Input() pos!: Position;
 
   constructor(private positionService: PositionService,
-              private modalService: NgbModal) { }
+              private modalService: NgbModal,
+              public userService: UserService) { }
 
   ngOnInit(): void {
   }
