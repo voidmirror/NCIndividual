@@ -1,0 +1,22 @@
+<ng-template #edit let-modal>
+    <app-addrole-user [user]="user"></app-addrole-user>
+</ng-template>
+
+<div style="margin-top: 150px;">
+    <p>
+        Имя, Фамилия: {{user.name}}
+    </p>
+    <p>
+        Имя пользователя: {{user.username}}
+    </p>
+    <p>
+        E-mail: {{user.email}}
+    </p>
+    <p>
+        Номер телефона: {{user.phoneNumber}}
+    </p>
+    <p>
+        Роль: {{user.roles[0].name}}
+    </p>
+    <button (click)="openPopup(edit)">Изменить роль</button>
+</div>

@@ -1,5 +1,6 @@
 package com.own.controller;
 
+import com.own.additional.RoleChanger;
 import com.own.entity.User;
 import com.own.exception.UserLoginAlreadyExistsException;
 import com.own.exception.UserNotFoundException;
@@ -36,6 +37,14 @@ public class UserController {
         userService.signUp(user);
 //        userRepository.save(user);
         System.out.println(userRepository.findByUsername(user.getUsername()));
+    }
+
+    @PutMapping(value = "/add", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public void changeUserRole(@RequestBody RoleChanger roleChanger) throws UserLoginAlreadyExistsException {
+        System.out.println(roleChanger.toString());
+        userService.changeUser(roleChanger);
+//        userRepository.save(user);
+//        System.out.println(userRepository.findByUsername(user.getUsername()));
     }
 
 //    @PostMapping("/login")

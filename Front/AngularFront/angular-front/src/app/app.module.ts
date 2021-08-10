@@ -25,6 +25,9 @@ import { ProductItemComponent } from './product-item/product-item.component';
 import { PositionDetailsComponent } from './position-details/position-details.component';
 import { FormsModule } from '@angular/forms';
 import { EditwareFormComponent } from './editware-form/editware-form.component';
+import { UserCardComponent } from './user-card/user-card.component';
+import { EdituserFormComponent } from './edituser-form/edituser-form.component';
+import { AddroleUserComponent } from './addrole-user/addrole-user.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { EditwareFormComponent } from './editware-form/editware-form.component';
     BasketComponent,
     ProductItemComponent,
     PositionDetailsComponent,
-    EditwareFormComponent
+    EditwareFormComponent,
+    UserCardComponent,
+    EdituserFormComponent,
+    AddroleUserComponent
   ],
   imports: [
     BrowserModule,

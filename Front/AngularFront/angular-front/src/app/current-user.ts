@@ -16,13 +16,13 @@ export class CurrentUser {
         console.log('copy');
         console.log(copy);
         console.log('end copy');
-        
-        this.name = copy.name;
-        this.username = copy.username;
-        this.email = copy.email;
-        this.phoneNumber = copy.phoneNumber;
-        this.roles = copy.roles;
-        
+        if (copy != null) {
+            this.name = copy.name;
+            this.username = copy.username;
+            this.email = copy.email;
+            this.phoneNumber = copy.phoneNumber;
+            this.roles = copy.roles;
+        }
     }
 
 
@@ -33,10 +33,12 @@ export class CurrentUser {
     }
 
     public findPrivilege(privilege: string): boolean {
-        for (let i = 0; i < this.roles.length; i++) {
-            for (let j = 0; j < this.roles[i].privileges.length; j++) {
-                if (privilege == this.roles[i].privileges[j].name) {
-                    return true;
+        if (this.roles != null) {
+            for (let i = 0; i < this.roles.length; i++) {
+                for (let j = 0; j < this.roles[i].privileges.length; j++) {
+                    if (privilege == this.roles[i].privileges[j].name) {
+                        return true;
+                    }
                 }
             }
         }

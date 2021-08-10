@@ -1,5 +1,6 @@
 package com.own.service;
 
+import com.own.additional.RoleChanger;
 import com.own.entity.Role;
 import com.own.entity.User;
 import com.own.exception.UserLoginAlreadyExistsException;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.validation.Valid;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -53,7 +55,7 @@ public class UserService {
     }
 
     public User signUp(@Valid User user) throws UserLoginAlreadyExistsException {
-        System.out.println(user);
+        System.out.println("SIGNUP" +   user);
 //        User existed = userRepository.findByLogin(user.getLogin());
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
             String message = "User with this login already exists: " + user.getUsername();
@@ -80,10 +82,22 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public void changeUser(RoleChanger roleChanger) {
+        User copy = userRepository.findByUsername(roleChanger.getUsername()).get();
+        assignRole(copy, roleChanger.getRole());
+        userRepository.save(copy);
+    }
+
     public void assignRole(User user, String role) {
 
-        user.getRoles().add(roleRepository.findByName(role));
+//        user.getRoles().add(roleRepository.findByName(role));
 
+//        System.out.println(userRepository.findByUsername(user.getUsername()).get());
+
+        user.setRoles(Arrays.asList(roleRepository.findByName(role)));
+        System.out.println(user);
+
+//        System.out.println(userRepository.findByUsername(user.getUsername()).get());
 
     }
 

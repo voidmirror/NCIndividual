@@ -21,11 +21,15 @@ export class UserService {
   }
 
   public retrieveAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl);
+    return this.http.get<User[]>(this.usersUrl + '/all');
   }
 
   public saveUser(user: User) {
     return this.http.post<User>(this.userSaveUrl, user);
+  }
+
+  public changeUserRole(changeRole: Object) {
+    return this.http.put(this.usersUrl + '/add', changeRole);
   }
 
   // public loginUser(user: User) {

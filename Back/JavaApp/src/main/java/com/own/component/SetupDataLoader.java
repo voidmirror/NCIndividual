@@ -46,10 +46,21 @@ public class SetupDataLoader implements
                 = createPrivilegeIfNotFound("EDIT_CATALOG");
         Privilege addwarePrivilege
                 = createPrivilegeIfNotFound("ADDWARE");
+        Privilege edituserPrivilege
+                = createPrivilegeIfNotFound("EDIT_USER");
+        Privilege viewProfilePrivilege
+                = createPrivilegeIfNotFound("VIEW_PROFILE");
+
 
         List<Privilege> warehouseManagerPrivileges = Arrays.asList(
                 editCatalogPrivilege, editCatalogPrivilege);
+        List<Privilege> adminPrivileges = Arrays.asList(
+                edituserPrivilege);
+        List<Privilege> userPrivileges = Arrays.asList(
+                viewProfilePrivilege);
         createRoleIfNotFound("WAREHOUSE_MANAGER", warehouseManagerPrivileges);
+        createRoleIfNotFound("ADMIN", adminPrivileges);
+        createRoleIfNotFound("USER", userPrivileges);
 //        createRoleIfNotFound("USER", Arrays.asList(readPrivilege));
 
         Role warehouseManagerRole = roleRepository.findByName("WAREHOUSE_MANAGER");

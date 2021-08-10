@@ -58,13 +58,15 @@ export class LoginFormComponent implements OnInit {
   onSubmitAuthenticate(): void {
     console.log(this.adduserForm.value);
     let user = new User(this.adduserForm.value.login, this.adduserForm.value.password, this.adduserForm.value.name, this.adduserForm.value.email, this.adduserForm.value.phoneNumber);
-    let added = this.userService.saveUser(user);
-    console.log(added.subscribe(added => {
-      user = added;
-      
-    }))
+    console.log(user);
     
-    console.log(added);
+    this.userService.saveUser(user).subscribe();
+    // console.log(added.subscribe(added => {
+    //   user = added;
+      
+    // }))
+    
+    // console.log(added);
     console.log(user);
   }
 

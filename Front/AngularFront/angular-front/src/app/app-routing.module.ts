@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddwareFormComponent } from './addware-form/addware-form.component';
 import { BasketComponent } from './basket/basket.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { EdituserFormComponent } from './edituser-form/edituser-form.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ProductCatalogComponent } from './product-catalog/product-catalog.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'feedback', component: FeedbackComponent },
   { path: 'basket', component: BasketComponent },
   { path: 'addware', component: AddwareFormComponent },
+  { path: 'edituser', component: EdituserFormComponent },
   { path: '', component: ProductCatalogComponent }
 ];
 

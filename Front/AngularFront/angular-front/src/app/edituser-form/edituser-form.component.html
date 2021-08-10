@@ -1,0 +1,13 @@
+<!-- <ng-template #edit let-modal>
+    <app-user-card [user]="selectedUser"></app-user-card>
+</ng-template> -->
+
+<div *ngFor="let user of users">
+    
+    <app-user-card [user]="user"></app-user-card>
+
+    <!-- <p>
+        Имя, Фамилия: {{user.name}}
+    </p> -->
+    
+</div>

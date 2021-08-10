@@ -1,0 +1,12 @@
+<p>
+    Имя, Фамилия: {{user.name}}
+</p>
+<p>
+    Имя пользователя: {{user.username}}
+</p>
+<p>
+    Роль: {{user.roles[0].name}}
+</p>
+<button (click)="putRole('WAREHOUSE_MANAGER')">Изменить роль на WAREHOUSE_MANAGER</button>
+<button (click)="putRole('USER')">Изменить роль на USER</button>
+<button (click)="putRole('ADMIN')">Изменить роль на ADMIN</button>
