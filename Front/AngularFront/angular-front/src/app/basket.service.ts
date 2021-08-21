@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { BasketPosition } from './BasketPosition';
 import { Position } from './Position';
+import { UserService } from './user-service.service';
 // import { OnInit, OnChanges } from '@angular/core';
 
 
@@ -13,7 +15,10 @@ export class BasketService {
 
   basket: BasketPosition[] = [];
 
-  constructor(private http: HttpClient) {
+  basketLink: string = 'https://localhost:8443/rest/v1/basket'
+
+  constructor(private http: HttpClient,
+    private userService: UserService) {
     console.log('BASKETSERVICE INITIATING');
     
     if (localStorage.getItem('MySportStoreBasket') != null) {
@@ -50,6 +55,28 @@ export class BasketService {
     // this.backupBasket();
     // console.log(this.basket);
     
+  }
+
+  public pay() {
+    
+  }
+
+  public calculateAllPrice(): number {
+
+    let sum: number = 0;
+
+    let send = {
+      'basketPositions' : this.basket,
+      'username' : this.userService.currentUser.username
+    }
+
+    this.http.post(this.basketLink + '/calculate/all', send).subscribe(data => {
+      sum = data as number;
+      console.log('sum is ' + sum);
+      
+    })
+
+    return sum;
   }
 
   backupBasket(): void {

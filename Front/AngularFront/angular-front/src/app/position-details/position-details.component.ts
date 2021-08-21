@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DiscountService } from '../discount.service';
 import { Position } from '../Position';
 import { PositionService } from '../position-service.service';
 import { UserService } from '../user-service.service';
@@ -15,7 +16,8 @@ export class PositionDetailsComponent implements OnInit {
 
   constructor(private positionService: PositionService,
               private modalService: NgbModal,
-              public userService: UserService) { }
+              public userService: UserService,
+              public discountService: DiscountService) { }
 
   ngOnInit(): void {
   }

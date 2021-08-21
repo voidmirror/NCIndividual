@@ -1,4 +1,9 @@
 .inner {
     display: inline-block;
     text-align: center;
+    padding: 150px;
+}
+
+p {
+    font-size: larger;
 }

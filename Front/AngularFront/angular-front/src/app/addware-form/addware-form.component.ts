@@ -18,7 +18,8 @@ export class AddwareFormComponent implements OnInit {
   addWareForm = new FormGroup({
     name: new FormControl(),
     price: new FormControl(),
-    description: new FormControl()
+    description: new FormControl(),
+    category: new FormControl()
   });
 
   deleteWareForm = new FormGroup({
@@ -34,7 +35,7 @@ export class AddwareFormComponent implements OnInit {
 
   onAddSubmit(): void {
     // console.log(this.addWareForm.value);
-    let pos = new Position(this.addWareForm.value.name, this.addWareForm.value.price, this.addWareForm.value.description);
+    let pos = new Position(this.addWareForm.value.name, this.addWareForm.value.price, this.addWareForm.value.description, this.addWareForm.value.category);
     
     let save = this.positionService.savePosition(pos)
     console.log(save.subscribe(data => {

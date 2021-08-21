@@ -16,7 +16,8 @@ export class EditwareFormComponent implements OnInit {
     id: new FormControl(),
     name: new FormControl(),
     price: new FormControl(),
-    description: new FormControl()
+    description: new FormControl(),
+    category: new FormControl()
   });
 
   constructor(private positionService: PositionService) { }
@@ -27,7 +28,8 @@ export class EditwareFormComponent implements OnInit {
   public editPosition(): void {
     let position = new Position(this.editWareForm.value.name == null ? this.pos.name : this.editWareForm.value.name,
       this.editWareForm.value.price == null ? this.pos.price : this.editWareForm.value.price,
-      this.editWareForm.value.description == null ? this.pos.description : this.editWareForm.value.description);
+      this.editWareForm.value.description == null ? this.pos.description : this.editWareForm.value.description,
+      this.editWareForm.value.category == null ? this.pos.category : this.editWareForm.value.category);
 
     position.id = this.pos.id;
     this.positionService.editPosition(position);

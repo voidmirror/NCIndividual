@@ -39,12 +39,6 @@ export class LoginFormComponent implements OnInit {
     let user = new User(this.loginForm.value.login, this.loginForm.value.password);
     let logged = this.userService.loginUser(user) as User;
     let response;
-    // console.log(logged.subscribe(logged => {
-    //   response = logged;
-    // }))
-    
-    // this.currentUser.setEmail(logged.email);
-    // this.currentUser.setPhoneNumber(logged.phoneNumber);
     
     console.log('current user start');    
     console.log(this.userService.currentUser.email);
@@ -52,7 +46,7 @@ export class LoginFormComponent implements OnInit {
     console.log(logged);
     console.log(response);
     this.router.navigate(['/']);
-    // location.reload();
+    location.reload();
   }
 
   onSubmitAuthenticate(): void {
@@ -61,12 +55,7 @@ export class LoginFormComponent implements OnInit {
     console.log(user);
     
     this.userService.saveUser(user).subscribe();
-    // console.log(added.subscribe(added => {
-    //   user = added;
-      
-    // }))
-    
-    // console.log(added);
+
     console.log(user);
   }
 

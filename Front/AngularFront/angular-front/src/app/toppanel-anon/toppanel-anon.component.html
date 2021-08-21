@@ -17,6 +17,7 @@
 <div class="toppanel">
     <nav>
         <ul>
+            <li *ngIf="userService.currentUser.findPrivilege('EDIT_USER') == true" (click)=redirectToEdituser()>Редактировать пользователей</li>
             <li *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" (click)=openPopup(addware)>Добавить товар</li>
             <li (click)="redirectToFeedback()">Помощь</li>
             <li>Отслеживание заказов</li>

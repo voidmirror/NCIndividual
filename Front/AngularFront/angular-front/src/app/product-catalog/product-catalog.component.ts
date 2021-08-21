@@ -16,7 +16,8 @@ export class ProductCatalogComponent implements OnInit {
   positions: Position[];
   isInCatalog: boolean = true;
 
-  constructor(private positionService: PositionService, private basketService: BasketService) {
+  constructor(public positionService: PositionService, 
+    private basketService: BasketService) {
     this.listPos = new PositionListComponent(positionService);
     this.positions = this.listPos.getPositions();
    }
@@ -27,6 +28,8 @@ export class ProductCatalogComponent implements OnInit {
     });
     // console.log(this.positions);
     this.positions = this.listPos.getPositions();
+    console.log('INIT PRODUCT CATALOG');
+    
   }
   
   addToBasket(pos: Position): void {

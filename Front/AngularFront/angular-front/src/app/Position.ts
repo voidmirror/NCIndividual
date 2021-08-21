@@ -3,6 +3,7 @@ export class Position {
     name!: string;
     price!: number;
     description!: string;
+    category!: string;
     // imagePath: string;
 
     // Position(name: string, price: number, description: string) {
@@ -17,10 +18,11 @@ export class Position {
     //     this.description = description;
     // }
 
-    constructor (name: string, price: number, description: string) {
+    constructor (name: string, price: number, description: string, category: string) {
         this.name = name;
         this.price = price;
         this.description = description;
+        this.category = category;
     }
 
     // constructor (id: number, name: string, price: number, description: string) {

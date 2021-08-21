@@ -9,5 +9,7 @@
     <!-- <p>
         Имя, Фамилия: {{user.name}}
     </p> -->
+
+    <p><button *ngIf="userService.currentUser.findPrivilege('EDIT_USER') == true" type="button" class="btn btn-outline-primary" style="margin: 30px;" (click)="discountService.addUserDiscount(user.username, 'discountPersonal')">Добавить персональную скидку</button></p>
     
 </div>

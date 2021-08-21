@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { DiscountService } from '../discount.service';
 import { User } from '../User';
 import { UserService } from '../user-service.service';
 
@@ -12,7 +13,8 @@ export class EdituserFormComponent implements OnInit, OnChanges {
   users!: User[];
   // selectedUser!: User;
 
-  constructor(private userService: UserService) { }
+  constructor(public userService: UserService,
+    public discountService: DiscountService) { }
 
   ngOnInit(): void {
     console.log('ON INIT EDITUSER');

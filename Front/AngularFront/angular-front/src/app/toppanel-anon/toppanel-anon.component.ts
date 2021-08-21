@@ -67,6 +67,10 @@ export class ToppanelAnonComponent implements OnInit {
     this.router.navigate(['feedback']);
   }
 
+  redirectToEdituser(): void {
+    this.router.navigate(['edituser']);
+  }
+
   redirectToBasket(): void {
     this.router.navigate(['basket']);
   }

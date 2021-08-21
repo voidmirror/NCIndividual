@@ -11,6 +11,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "User")
 @Table(name = "user", indexes = @Index(name = "user_username_index", columnList = "username"))
@@ -34,6 +36,10 @@ public class User {
 
     private String phoneNumber;
 
+    @ElementCollection
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Set<Discount> discounts;
+
 //    private boolean active;
 
 //    private String roles;
@@ -46,7 +52,7 @@ public class User {
                     name = "user_id", referencedColumnName = "id"),
             joinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> roles;
+    private Set<Role> roles;
 
     public int getId() {
         return id;
@@ -96,11 +102,39 @@ public class User {
         this.password = password;
     }
 
-    public Collection<Role> getRoles() {
+    public Set<Discount> getDiscounts() {
+        return discounts;
+    }
+
+    public void setDiscounts(Set<Discount> discounts) {
+        this.discounts = discounts;
+    }
+
+    public void addDiscount(Discount discount) {
+        if (discounts == null) {
+            discounts = new HashSet<Discount>();
+        }
+
+        discounts.add(discount);
+    }
+
+    public void removeDiscount(Discount discount) {
+        if (discounts.isEmpty()) {
+            return;
+        }
+
+        discounts.remove(discount);
+    }
+
+    public void removeAllDiscounts() {
+        discounts.clear();
+    }
+
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Collection<Role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
@@ -129,6 +163,7 @@ public class User {
                 ", phoneNumber='" + phoneNumber + '\'' +
 //                ", roles=" + Arrays.toString(roles.toArray()) +
                 ", roles=" + (roles == null ? "null" : Arrays.toString(roles.toArray())) +
+                ", discounts=" + (discounts == null ? "null" : Arrays.toString(discounts.toArray())) +
                 '}';
     }
 }

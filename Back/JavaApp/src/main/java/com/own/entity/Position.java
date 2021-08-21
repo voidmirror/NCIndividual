@@ -1,6 +1,12 @@
 package com.own.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "position")
@@ -15,6 +21,12 @@ public class Position {
     private double price;
 
     private String description;
+
+    private String category;
+
+    @ElementCollection
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Set<Discount> discounts;
 
     public int getId() {
         return id;
@@ -48,6 +60,46 @@ public class Position {
         this.description = description;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Set<Discount> getDiscounts() {
+        return discounts;
+    }
+
+    public void setDiscounts(Set<Discount> discounts) {
+        this.discounts = discounts;
+    }
+
+    //    public void setDiscount(Set<Discount> discount) {
+//        this.discount = discount;
+//    }
+
+    public void addDiscount(Discount discount) {
+        if (discounts == null) {
+            discounts = new HashSet<Discount>();
+        }
+
+        discounts.add(discount);
+    }
+
+    public void removeDiscount(Discount discount) {
+        if (discounts.isEmpty()) {
+            return;
+        }
+
+        discounts.remove(discount);
+    }
+
+    public void removeAllDiscounts() {
+        discounts.clear();
+    }
+
     @Override
     public String toString() {
         return "Position{" +
@@ -55,6 +107,7 @@ public class Position {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +
+                ", discounts=" + (discounts == null ? "null" : Arrays.toString(discounts.toArray())) +
                 '}';
     }
 }

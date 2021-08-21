@@ -12,13 +12,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.validation.Valid;
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -65,12 +64,7 @@ public class UserService {
 //        user.setPassword(hasher.hash(user.getPassword()));
 //        PasswordEncoder passwordEncoder = new Pbkdf2PasswordEncoder();
 
-        // TODO: TEMPORARY
-//        if (user.getUsername().equals("admin")) {
-//            user.setRoles("ADMIN");
-//        }
-
-        user.setRoles(new ArrayList<Role>());
+        user.setRoles(new HashSet<Role>());
 
         System.out.println("Current password is: " + user.getPassword());
         String s = encoder.encode(user.getPassword());
@@ -85,16 +79,17 @@ public class UserService {
     public void changeUser(RoleChanger roleChanger) {
         User copy = userRepository.findByUsername(roleChanger.getUsername()).get();
         assignRole(copy, roleChanger.getRole());
+        System.out.println(copy);
         userRepository.save(copy);
     }
 
     public void assignRole(User user, String role) {
 
-//        user.getRoles().add(roleRepository.findByName(role));
-
-//        System.out.println(userRepository.findByUsername(user.getUsername()).get());
-
-        user.setRoles(Arrays.asList(roleRepository.findByName(role)));
+        System.out.println("role " + role);
+        System.out.println("repo " + roleRepository.findByName(role).getName());
+        Set<Role> set = new HashSet<>();
+        set.add(roleRepository.findByName(role));
+        user.setRoles(set);
         System.out.println(user);
 
 //        System.out.println(userRepository.findByUsername(user.getUsername()).get());

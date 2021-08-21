@@ -3,11 +3,16 @@
 </ng-template>
 
 <div class="col" style="margin: 20px;">
+    <h3 style="align-content: center;">Описание</h3>
     <!-- TODO: for each span add *ngIf -->
     <p>ID: {{pos.id}}</p>
     <p>Имя товара: {{pos.name}}</p>
     <p>Цена: {{pos.price}} р.</p>
+    <p>Категория: {{pos.category}}</p>
     <p>Описание: {{pos.description}}</p>
-    <button *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" type="button" class="btn btn-outline-danger" (click)="openPopup(edit)">Редактировать</button>
-    <button *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" type="button" class="btn btn-outline-danger">Удалить</button>
+    <p><button *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" type="button" class="btn btn-outline-primary" style="margin-right: 10px;" (click)="discountService.addWareDiscount(pos, 'discount5per')">Добавить скидку в 5%</button>
+    <button *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" type="button" class="btn btn-outline-primary" (click)="discountService.addWareDiscount(pos, 'discount10per')">Добавить скидку в 10%</button></p>
+    <p><button *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" type="button" class="btn btn-outline-danger" style="margin-right: 10px;" (click)="discountService.deleteWareDiscounts(pos)">Удалить скидки с товара</button>
+    <button *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" type="button" class="btn btn-outline-danger" style="margin-right: 10px;" (click)="openPopup(edit)">Редактировать</button>
+    <button *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" type="button" class="btn btn-outline-danger" disabled>Удалить</button></p>
 </div>

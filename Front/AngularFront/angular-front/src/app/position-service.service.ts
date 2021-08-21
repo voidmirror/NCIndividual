@@ -10,6 +10,7 @@ export class PositionService {
 
   private positionsUrl: string;
   private positionsUrl3: string;
+  private currentFilter: string = '';
   // private positionsSaveUrl: string;
 
   constructor(private http: HttpClient) {
@@ -33,6 +34,14 @@ export class PositionService {
 
   public editPosition(position: Position) {
     return this.http.put<Position>(this.positionsUrl, position).subscribe();
+  }
+
+  public setCurrentFilter(filter: string): void {
+    this.currentFilter = filter;
+  }
+
+  public getCurrentFilter(): string {
+    return this.currentFilter;
   }
 
   public deletePosition(position: Position) {
