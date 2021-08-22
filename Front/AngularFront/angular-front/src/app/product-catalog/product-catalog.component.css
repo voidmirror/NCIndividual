@@ -1,8 +1,4 @@
-/* .window {
-    align-content: center;
-    text-align: center;
-    margin: 0 auto;
-} */
+
 
 .card-list {
     /* margin-top: 150px; */
@@ -18,15 +14,6 @@
 }
 .item-card {
     list-style-type: none;
-    /* display: flex;
-    flex-wrap: flex;
-    align-content: flex-start;
-    height: 300px;
-    width: 200px;
-    margin: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    outline: 2px dashed #ccc; */
 }
 .item-card-component {
     

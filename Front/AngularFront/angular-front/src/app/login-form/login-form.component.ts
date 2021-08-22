@@ -34,7 +34,7 @@ export class LoginFormComponent implements OnInit {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
-  onSubmitLogin(): void {
+  async onSubmitLogin(): Promise<void> {
     console.log(this.loginForm.value);
     let user = new User(this.loginForm.value.login, this.loginForm.value.password);
     let logged = this.userService.loginUser(user) as User;
@@ -46,6 +46,7 @@ export class LoginFormComponent implements OnInit {
     console.log(logged);
     console.log(response);
     this.router.navigate(['/']);
+    await new Promise(resolve => setTimeout(resolve, 3000));
     location.reload();
   }
 

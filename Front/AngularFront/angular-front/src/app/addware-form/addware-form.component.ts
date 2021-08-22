@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpService } from '../http.service';
 import { Position } from '../Position';
@@ -26,7 +27,8 @@ export class AddwareFormComponent implements OnInit {
     id: new FormControl()
   });
 
-  constructor(/*private http: HttpService*/ /*private client: HttpClient*/ private positionService: PositionService) {
+  constructor(private positionService: PositionService,
+    private router: Router) {
     
    }
 
@@ -43,7 +45,7 @@ export class AddwareFormComponent implements OnInit {
     }))
     console.log(save);
     console.log(pos);
-    
+    this.router.navigate(['/']);
   }
 
   onDeleteSubmit(): void {

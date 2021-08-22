@@ -72,6 +72,7 @@ export class BasketService {
 
     this.http.post(this.basketLink + '/calculate/all', send).subscribe(data => {
       sum = data as number;
+      data.valueOf
       console.log('sum is ' + sum);
       
     })
