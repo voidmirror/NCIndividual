@@ -22,7 +22,7 @@
         </div>
 
         <div style="display:inline-block;">
-            <button *ngIf="isInCatalog == true" type="button" (click)="addToBasket(pos)" style=" margin-top: 10px;" class="btn btn-outline-primary">Добавить в корзину</button>
+            <button *ngIf="isInCatalog == true && isLogged()" type="button" (click)="addToBasket(pos)" style=" margin-top: 10px;" class="btn btn-outline-primary">Добавить в корзину</button>
             <button type="button" (click)="openPopup(details)" class="btn btn-outline-primary" style=" margin-top: 10px;">Подробнее</button>
         </div>
     </div>

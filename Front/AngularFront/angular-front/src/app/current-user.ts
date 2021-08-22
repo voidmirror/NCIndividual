@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core'
+import { Router } from '@angular/router';
 import { Role } from './CustomTypes'
 
 @Injectable()
@@ -25,11 +26,28 @@ export class CurrentUser {
         }
     }
 
+    public clearCurrentUser(): void {
+        this.name = '';
+        this.username = '';
+        this.email = '';
+        this.phoneNumber = '';
+        for (let i = 0; i < this.roles.length; i++) {
+            this.roles.pop();
+        }
+        this.print();
+        this.deleteFromStorage();
+
+
+
+    }
+
 
     public print(): void {
         console.log(this.name);
+        console.log(this.username);
         console.log(this.email);
         console.log(this.phoneNumber);
+        console.log(this.roles);
     }
 
     public findPrivilege(privilege: string): boolean {
@@ -44,6 +62,10 @@ export class CurrentUser {
         }
 
         return false;
+    }
+
+    public deleteFromStorage(): void {
+        localStorage.removeItem('MySportStoreCurrentUser');
     }
 
     public saveInStorage(): void {

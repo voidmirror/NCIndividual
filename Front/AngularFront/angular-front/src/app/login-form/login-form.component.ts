@@ -46,7 +46,7 @@ export class LoginFormComponent implements OnInit {
     console.log(logged);
     console.log(response);
     this.router.navigate(['/']);
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await new Promise(resolve => setTimeout(resolve, 500));
     location.reload();
   }
 

@@ -8,10 +8,7 @@ import com.own.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class BasketService {
@@ -22,7 +19,7 @@ public class BasketService {
     @Autowired
     private UserRepository userRepository;
 
-    private ArrayList<Discount> globalDiscounts = new ArrayList<>();
+    private final ArrayList<Discount> globalDiscounts = new ArrayList<>();
 
     // Possibly add new features like sales or promo codes
     public double calculatePrice(BasketPosition basketPosition) {
@@ -34,10 +31,18 @@ public class BasketService {
 
         double sum = 0;
 
+        System.out.println();
+        System.out.println();
+        System.out.println("INIT CALCULATE ALL BASKET");
+        System.out.println(Arrays.toString(basketPositions));
+        System.out.println(username);
+
         for (BasketPosition b : basketPositions) {
 
             if (b.getPos().getDiscounts() != null) {
+                System.out.println("INSIDE DISCOUNTS");
                 if (!b.getPos().getDiscounts().isEmpty()) {
+                    System.out.println("INSIDE DISCOUNTS NOT EMPTY");
 
                     ArrayList<Double> stackablePrice = new ArrayList<>();
                     ArrayList<Double> unstackablePrice = new ArrayList<>();
@@ -55,18 +60,27 @@ public class BasketService {
                         stackablePrice.add(d.applyDiscount(b.getPos().getPrice(), b.getNum()));
                     }
 
+                    System.out.println(stackablePrice);
+                    System.out.println(unstackableDiscounts);
+
                     double currentSum = Collections.min(stackablePrice);
+                    System.out.println("Current Sum after stackble: " + currentSum);
 
                     for (Discount d : unstackableDiscounts) {
                         currentSum = d.applyDiscount(currentSum, b.getNum());
                     }
 
+                    System.out.println("Current Sum after unstackble: " + currentSum);
+
                     sum += currentSum;
 
+                } else {
+                    System.out.println("NO DISCOUNTS");
+                    sum += b.getPos().getPrice() * b.getNum();
                 }
-            } else {
-                sum += b.getPos().getPrice() * b.getNum();
             }
+
+            System.out.println("Sum before global: " + sum);
 
             // personal discount from repository
             Set<Discount> personalDiscounts = userRepository.findByUsername(username).get().getDiscounts();;
@@ -79,6 +93,7 @@ public class BasketService {
             for (BasketPosition basketPosition : basketPositions) {
                 countWare += basketPosition.getNum();
             }
+            System.out.println("Count Ware: " + countWare);
 
             if (personalDiscounts != null && !personalDiscounts.isEmpty()) {
                 for (Discount d : personalDiscounts) {
@@ -95,6 +110,8 @@ public class BasketService {
                 }
             }
 
+            System.out.println("Sum after global: " + sum);
+
             stackablePrice.clear();
             unstackableDiscounts.clear();
             System.out.println("AFTER CLEAR " + stackablePrice);
@@ -103,6 +120,7 @@ public class BasketService {
             if (globalDiscounts != null && !globalDiscounts.isEmpty()) {
 
                 for (Discount d : globalDiscounts) {
+                    System.out.println(d.getName());
                     if (d.isStackable()) {
                         stackablePrice.add(d.applyDiscount(sum, countWare));
                     } else {
@@ -123,6 +141,11 @@ public class BasketService {
             }
 
         }
+
+        System.out.println("Sum at the end: " + sum);
+        System.out.println("INIT CALCULATE ALL BASKET");
+        System.out.println();
+        System.out.println();
 
         return sum;
     }

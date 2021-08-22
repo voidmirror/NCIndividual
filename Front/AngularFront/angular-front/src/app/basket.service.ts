@@ -13,12 +13,14 @@ import { UserService } from './user-service.service';
 })
 export class BasketService {
 
+  basketSum: number = 0;
+
   basket: BasketPosition[] = [];
 
   basketLink: string = 'https://localhost:8443/rest/v1/basket'
 
   constructor(private http: HttpClient,
-    private userService: UserService) {
+    public userService: UserService) {
     console.log('BASKETSERVICE INITIATING');
     
     if (localStorage.getItem('MySportStoreBasket') != null) {
@@ -57,11 +59,18 @@ export class BasketService {
     
   }
 
+  public clearBasket(): void {
+    for (let i = 0; i < this.basket.length; i++) {
+      this.basket.pop();
+  }
+    localStorage.removeItem('MySportStoreBasket');
+  }
+
   public pay() {
     
   }
 
-  public calculateAllPrice(): number {
+  public async calculateAllPrice(): Promise<number> {
 
     let sum: number = 0;
 
@@ -71,11 +80,17 @@ export class BasketService {
     }
 
     this.http.post(this.basketLink + '/calculate/all', send).subscribe(data => {
-      sum = data as number;
-      data.valueOf
-      console.log('sum is ' + sum);
+      this.basketSum = data as number;
+      console.log('basketSum is ' + this.basketSum);
       
+      console.log('sum is ' + sum);
     })
+
+    console.log(this.basketSum);
+    
+    await new Promise(resolve => setTimeout(resolve, 500));
+    console.log('after post sum is ' + sum);
+    
 
     return sum;
   }

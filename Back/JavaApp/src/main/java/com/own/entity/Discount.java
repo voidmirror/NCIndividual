@@ -15,8 +15,16 @@ public class Discount {
 
     private boolean stackable;
 
+    public Discount() {}
+
     public Discount(String name) {
         this.name = name;
+    }
+
+    public Discount(int id, String name, boolean stackable) {
+        this.id = id;
+        this.name = name;
+        this.stackable = stackable;
     }
 
     public int getId() {
@@ -44,6 +52,6 @@ public class Discount {
     }
 
     public double applyDiscount(Double price, Integer num) {
-        return price;
+        return price * 100;
     }
 }

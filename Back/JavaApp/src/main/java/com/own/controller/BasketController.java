@@ -27,10 +27,17 @@ public class BasketController {
     }
 
     @PostMapping(value = "/calculate/all", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Double> calculateBasketPrice(@RequestBody BasketCountObject basketCountObject) {
+    public double calculateBasketPrice(@RequestBody BasketCountObject basketCountObject) {
         System.out.println("INSIDE BASKET ALL PRICES CONTROLLER");
         System.out.println(Arrays.toString(basketCountObject.getBasketPositions()));
-        return new ResponseEntity<>(basketService.calculateAllBasket(basketCountObject.getBasketPositions(), basketCountObject.getUsername()), HttpStatus.OK);
+        return basketService.calculateAllBasket(basketCountObject.getBasketPositions(), basketCountObject.getUsername());
     }
+
+//    @PostMapping(value = "/calculate/all", consumes = {MediaType.APPLICATION_JSON_VALUE})
+//    public ResponseEntity<Double> calculateBasketPrice(@RequestBody BasketCountObject basketCountObject) {
+//        System.out.println("INSIDE BASKET ALL PRICES CONTROLLER");
+//        System.out.println(Arrays.toString(basketCountObject.getBasketPositions()));
+//        return new ResponseEntity<>(basketService.calculateAllBasket(basketCountObject.getBasketPositions(), basketCountObject.getUsername()), HttpStatus.OK);
+//    }
 
 }

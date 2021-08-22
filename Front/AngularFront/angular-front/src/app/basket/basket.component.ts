@@ -26,6 +26,11 @@ export class BasketComponent implements OnInit, OnDestroy, OnChanges {
     localStorage.setItem('MySportStoreBasket', JSON.stringify(this.basketService.basket));
   }
 
+  public isLogged(): boolean {
+    // console.log(this.basketService.userService.currentUser.username == undefined);
+    return this.basketService.userService.currentUser.username != undefined;
+  }
+
   // public countSum(): number {
   //   let sum = 0;
   //   for (let item of this.basketService.basket) {
@@ -38,9 +43,10 @@ export class BasketComponent implements OnInit, OnDestroy, OnChanges {
   // }
 
   public countSum(): number {
+    this.basketService.calculateAllPrice();
+    return 100;
     
-    
-    return this.basketService.calculateAllPrice();
+    // return this.basketService.calculateAllPrice();
   }
 
 }

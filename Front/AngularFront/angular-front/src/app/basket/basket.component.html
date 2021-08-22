@@ -1,5 +1,5 @@
 <!-- {{basketService.basket}} -->
-<div *ngIf="basketService.basket.length != 0">
+<div *ngIf="basketService.basket.length != 0 || basketService.basketSum != 0">
     <div *ngFor="let item of basketService.basket" style="display: inline-flex;">
         <!-- <div>
             {{item.pos.name}}: {{item.pos.price}} ({{item.num}})
@@ -17,9 +17,12 @@
     </div>
 
     <br><br>
-    <div>Сумма заказа: {{sum}}</div>
+    <div>Сумма заказа: {{basketService.basketSum}}</div>
     <button class="btn btn-primary" style="margin: 20px;">Оплатить заказ</button>
 </div>
-<div *ngIf="basketService.basket.length == 0">
-    Ваша корзина пока пуста
+<div *ngIf="isLogged() && (basketService.basket.length == 0 || basketService.basketSum == 0)" style="margin-top: 150px;">
+    <h3>Ваша корзина пока пуста</h3>
+</div>
+<div *ngIf="!isLogged()" style="margin-top: 150px;">
+    <h3>Войдите в Учётную запись, чтобы управлять корзиной</h3>
 </div>

@@ -7,6 +7,7 @@
         <p>E-mail: {{userService.currentUser.email}}</p>
         <p>Телефон: {{userService.currentUser.phoneNumber}}</p>
         <p><button class="btn btn-outline-primary" disabled>Изменить данные</button></p>
+        <p><button class="btn btn-outline-danger" (click)='userService.logoutUser()'>Выйти из Учётной записи</button></p>
     </div>
 
     <!-- <div class="inner">

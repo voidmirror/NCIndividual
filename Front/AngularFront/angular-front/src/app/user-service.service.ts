@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { User } from './User';
 import { CurrentUser } from './current-user';
+import { Router } from '@angular/router';
+import { BasketService } from './basket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,8 @@ export class UserService {
   private userSaveUrl: string;
 
   constructor(private http: HttpClient,
-    public currentUser: CurrentUser) {
+    public currentUser: CurrentUser,
+    private router: Router) {
     this.usersUrl = 'https://localhost:8443/rest/v1/users';
     this.usersLoginUrl = 'https://localhost:8443/login';
     this.userSaveUrl = 'https://localhost:8443/rest/v1/users/add';
@@ -97,5 +100,13 @@ export class UserService {
     return result;
   }
 
+
+  public async logoutUser(): Promise<void> {
+      this.http.get('https://localhost:8443/logout');
+      this.currentUser.clearCurrentUser();
+      this.router.navigate(['']);
+      await new Promise(resolve => setTimeout(resolve, 500));
+      location.reload();
+  }
 
 }

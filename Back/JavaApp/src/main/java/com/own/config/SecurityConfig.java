@@ -78,7 +78,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .headers().frameOptions().disable()
 
 
-                .and().formLogin().successHandler(successHandler()).failureHandler(failureHandler());
+                .and().formLogin().successHandler(successHandler()).failureHandler(failureHandler())
+                .and().logout().addLogoutHandler();
 
     }
 
