@@ -1,78 +1,106 @@
 
 <div class="container"  style="margin-top:150px;">
-<div class="row align-items-center">
-    <div class="col">
-        <div class="border-right">
-        <h3>Sign Up</h3>
-        <form [formGroup]="adduserForm" (ngSubmit)="onSubmitAuthenticate()" name="form">
+
+    <div class="row justify-content-center align-items-center">
+        <div class="col-4 border-right" style="padding-right: 30px;">
             <div>
-                <!-- <div class="row">
-                    <div class="col">
-                        <p><label>Name</label></p>
-                        <p><label>Login</label></p>
-                        <p><label>Password</label></p>
-                        <p><label>E-mail</label></p>
-                        <p><label>Phone Number</label></p>
-                    </div>
-                    <div class="col">
+            <h3 style="margin-bottom: 20px;">Sign Up</h3>
+            <!-- <form [formGroup]="adduserForm" (ngSubmit)="onSubmitAuthenticate()" name="form">
+                <div>
+                    <p>
+                        <label>Name</label>
                         <input name="name" type="name" formControlName="name">
+                    </p>
+                    <p>
+                        <label>Login</label>
                         <input name="login" type="text" formControlName="login">
+                    </p>
+                    <p>
+                        <label>Password</label>
                         <input name="password" type="password" formControlName="password">
+                    </p>
+                    <p>
+                        <label>E-mail</label>
                         <input name="email" type="email" formControlName="email">
+                    </p>
+                    <p>
+                        <label>Phone Number</label>
                         <input name="phoneNumber" type="phoneNumber" formControlName="phoneNumber">
-                    </div>
-                </div> -->
-                <p>
-                    <label>Name</label>
-                    <input name="name" type="name" formControlName="name">
-                </p>
-                <p>
-                    <label>Login</label>
-                    <input name="login" type="text" formControlName="login">
-                </p>
-                <p>
-                    <label>Password</label>
-                    <input name="password" type="password" formControlName="password">
-                </p>
-                <p>
-                    <label>E-mail</label>
-                    <input name="email" type="email" formControlName="email">
-                </p>
-                <p>
-                    <label>Phone Number</label>
-                    <input name="phoneNumber" type="phoneNumber" formControlName="phoneNumber">
-                </p>
-                <p>
-                    <button type="submit" class="btn btn-outline-primary">
-                        Sign Up
-                    </button>
-                </p>
+                    </p>
+                    <p>
+                        <button type="submit" class="btn btn-outline-primary">
+                            Sign Up
+                        </button>
+                    </p>
+                </div>
+            </form> -->
+
+            <form [formGroup]="adduserForm" (ngSubmit)="onSubmitAuthenticate()" name="form">
+                <div class="form-group">
+                    <input type="name" class="form-control" formControlName="name" id="exampleInputEmail1" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName="login" id="login" placeholder="Prefferable Login">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" formControlName="email" id="email" placeholder="E-mail">
+                </div>
+                <div class="form-group">
+                    <input type="phoneNumber" class="form-control" formControlName="phoneNumber" id="phoneNumber" placeholder="Phone Number">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+              </form>
+
+
             </div>
-        </form>
+        </div>
+
+        
+
+        <!-- <div class="col">
+            <h3>Sign In</h3>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()" name="form">
+                <div>
+                    <p>
+                        <label>Login</label>
+                        <input name="login" type="text" formControlName="login">
+                    </p>
+                    <p>
+                        <label class="label">Password</label>
+                        <input name="password" type="password" formControlName="password">
+                    </p>
+                    <p>
+                        <button type="submit" class="btn btn-outline-primary">
+                            Sign In
+                        </button>
+                    </p>
+                </div>
+            </form>
+        </div> -->
+
+        <div class="col-4" style="padding-left: 30px;">
+            <h3 style="margin-bottom: 20px;">Sign In</h3>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()" name="form">
+                <div class="form-group">
+                
+                <input type="email" class="form-control" formControlName="login" id="login" aria-describedby="loginHelp" placeholder="Enter Login">
+                <small id="loginHelp" class="form-text text-muted">We'll never share your credential with anyone else.</small>
+                </div>
+                <div class="form-group">
+                
+                <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Sign In</button>
+            </form>
+
         </div>
     </div>
-    <div class="col">
-        <h3>Sign In</h3>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()" name="form">
-            <div>
-                <p>
-                    <label>Login</label>
-                    <input name="login" type="text" formControlName="login">
-                </p>
-                <p>
-                    <label class="label">Password</label>
-                    <input name="password" type="password" formControlName="password">
-                </p>
-                <p>
-                    <button type="submit" class="btn btn-outline-primary">
-                        Sign In
-                    </button>
-                </p>
-            </div>
-        </form>
 
-    </div>
-</div>
 </div>
 
 <!-- [disabled]="!form.form.valid" -->
