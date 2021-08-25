@@ -21,7 +21,9 @@
             <li *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" (click)=openPopup(addware)>Добавить товар</li>
             <li (click)="redirectToFeedback()">Помощь</li>
             <li>Отслеживание заказов</li>
-            <li (click)="redirectToSignOrProfile()" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">{{btnProfileValue}}</li>
+            <li (click)="redirectToSignOrProfile()" *ngIf="userService.currentUser.name == '' || userService.currentUser.name == undefined" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">Sign In/Up</li>
+            <li (click)="redirectToSignOrProfile()" *ngIf="userService.currentUser.name != '' && userService.currentUser.name != undefined" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">{{userService.currentUser.name}}</li>
+            <!-- <li (click)="redirectToSignOrProfile()" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">{{btnProfileValue}}</li> -->
             <li (click)="redirectToBasket()">Корзина ({{basketService.getPositionsNum()}})</li>
         </ul>
     </nav>

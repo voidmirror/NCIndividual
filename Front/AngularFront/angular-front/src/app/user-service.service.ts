@@ -101,12 +101,12 @@ export class UserService {
   }
 
 
-  public async logoutUser(): Promise<void> {
+  public logoutUser(){
       this.http.get('https://localhost:8443/logout');
       this.currentUser.clearCurrentUser();
       this.router.navigate(['']);
-      await new Promise(resolve => setTimeout(resolve, 500));
-      location.reload();
+      // await new Promise(resolve => setTimeout(resolve, 500));
+      // location.reload();
   }
 
 }
