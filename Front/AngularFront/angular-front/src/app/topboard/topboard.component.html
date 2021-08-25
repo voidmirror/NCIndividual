@@ -8,17 +8,17 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" (click)="filterCatalog('')">Home</a>
+            <a class="nav-link active" aria-current="page" (click)="filterCatalog('');positionService.changeCatalogHeader()">Home</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Категории
             </a>
             <ul class="dropdown-menu" container="body" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" (click)="filterCatalog('Football')">Футбол</a></li>
-              <li><a class="dropdown-item" (click)="filterCatalog('Volleyball')">Воллейбол</a></li>
+              <li><a class="dropdown-item" (click)="filterCatalog('Football');positionService.changeCatalogHeader()">Футбол</a></li>
+              <li><a class="dropdown-item" (click)="filterCatalog('Volleyball');positionService.changeCatalogHeader()">Воллейбол</a></li>
               
-              <li><a class="dropdown-item" (click)="filterCatalog('Hockey')">Хоккей</a></li>
+              <li><a class="dropdown-item" (click)="filterCatalog('Hockey');positionService.changeCatalogHeader()">Хоккей</a></li>
             </ul>
           </li>
           <li class="nav-item">

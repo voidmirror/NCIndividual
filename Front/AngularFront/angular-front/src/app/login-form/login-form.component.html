@@ -37,19 +37,19 @@
 
             <form [formGroup]="adduserForm" (ngSubmit)="onSubmitAuthenticate()" name="form">
                 <div class="form-group">
-                    <input type="name" class="form-control" formControlName="name" id="exampleInputEmail1" placeholder="Your Name">
+                    <input type="name" class="form-control" formControlName="name" id="authName" placeholder="Your Name">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" formControlName="login" id="login" placeholder="Prefferable Login">
+                    <input type="text" class="form-control" formControlName="login" id="authUsername" placeholder="Prefferable Login">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
+                    <input type="password" class="form-control" formControlName="password" id="authPassword" placeholder="Password">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" formControlName="email" id="email" placeholder="E-mail">
+                    <input type="email" class="form-control" formControlName="email" id="authEmail" placeholder="E-mail">
                 </div>
                 <div class="form-group">
-                    <input type="phoneNumber" class="form-control" formControlName="phoneNumber" id="phoneNumber" placeholder="Phone Number">
+                    <input type="phoneNumber" class="form-control" formControlName="phoneNumber" id="authPhoneNumber" placeholder="Phone Number">
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Sign Up</button>
@@ -87,12 +87,12 @@
             <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()" name="form">
                 <div class="form-group">
                 
-                <input type="email" class="form-control" formControlName="login" id="login" aria-describedby="loginHelp" placeholder="Enter Login">
+                <input type="email" class="form-control" formControlName="login" id="loginUsername" aria-describedby="loginHelp" placeholder="Enter Login">
                 <small id="loginHelp" class="form-text text-muted">We'll never share your credential with anyone else.</small>
                 </div>
                 <div class="form-group">
                 
-                <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
+                <input type="password" class="form-control" formControlName="password" id="loginPassword" placeholder="Password">
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Sign In</button>

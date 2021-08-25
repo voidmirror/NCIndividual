@@ -63,7 +63,11 @@ public class BasketService {
                     System.out.println(stackablePrice);
                     System.out.println(unstackableDiscounts);
 
-                    double currentSum = Collections.min(stackablePrice);
+                    double currentSum = 0;
+                    if (!stackablePrice.isEmpty()) {
+                        currentSum = Collections.min(stackablePrice);
+                    }
+
                     System.out.println("Current Sum after stackble: " + currentSum);
 
                     for (Discount d : unstackableDiscounts) {
@@ -104,7 +108,9 @@ public class BasketService {
                     }
 
                 }
-                sum = Collections.min(stackablePrice);
+                if (!stackablePrice.isEmpty()) {
+                    sum = Collections.min(stackablePrice);
+                }
                 for (Discount d : unstackableDiscounts) {
                     sum = d.applyDiscount(sum, countWare);
                 }

@@ -11,6 +11,7 @@ export class PositionService {
   private positionsUrl: string;
   private positionsUrl3: string;
   private currentFilter: string = '';
+  catalogHeader: string = 'Все товары';
   // private positionsSaveUrl: string;
 
   constructor(private http: HttpClient) {
@@ -21,6 +22,27 @@ export class PositionService {
 
   public retrieveAllPositions(): Observable<Position[]> {
     return this.http.get<Position[]>(this.positionsUrl);
+  }
+
+  
+
+  public changeCatalogHeader() {
+    
+    switch (this.currentFilter) {
+      case 'Football':
+        this.catalogHeader = 'Всё для Футбола';
+        break;
+      case 'Volleyball':
+          this.catalogHeader = 'Всё для Воллейбола';
+          break;
+      case 'Hockey':
+        this.catalogHeader = 'Всё для Хоккея';
+        break;
+    
+      default:
+        this.catalogHeader = 'Все товары';
+        break;
+    }
   }
 
   public getPositionById(id: number): Observable<Position> {

@@ -1,8 +1,8 @@
 <!-- <p>product-catalog works!</p> -->
 <!-- style="margin-top:200px; overflow-y: scroll;" -->
-<div>
-    <div class="card-list" style="margin-top: 100px;">
-        <!-- <h3>{{header}}</h3> -->
+<div style="margin-top: 120px;margin-left: 40px;">
+    <h3>{{positionService.catalogHeader}}</h3>
+    <div class="card-list">
         <ul *ngFor="let some of positions">
             <li class="item-card" *ngIf="positionService.getCurrentFilter() == '' || positionService.getCurrentFilter() == some.category">
                 <app-product-item [pos]="some" [isInCatalog]="isInCatalog"></app-product-item>

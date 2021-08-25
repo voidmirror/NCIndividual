@@ -1,4 +1,4 @@
-<div class="col" style="margin: 20px;">
+<div class="col-sm-11" style="margin: 20px;">
     <!-- TODO: for each span add *ngIf -->
     <!-- <p><input type="text" placeholder="{{pos.id}}" disabled></p>
     <p>Имя товара: <input type="text" placeholder="{{pos.name}}"></p>
@@ -8,7 +8,7 @@
     <button type="button" class="btn btn-outline-primary" (click)="editPosition()">Save</button>\ -->
 
 
-    <form [formGroup]="editWareForm" (ngSubmit)="editPosition()" name="form">
+    <!-- <form [formGroup]="editWareForm" (ngSubmit)="editPosition()" name="form">
         <h3>Add ware</h3>
         <div>
             <p>
@@ -37,6 +37,31 @@
                 </button>
             </p>
         </div>
-    </form>
+    </form> -->
+
+    <form [formGroup]="editWareForm" (ngSubmit)="editPosition()" name="form">
+        <div class="form-group">
+          <label for="id">ID</label>
+          <input type="text" class="form-control-plaintext" id="id" formControlName="id" placeholder="{{pos.id}}" readonly>
+        </div>
+        <div class="form-group">
+          <label for="name">Название</label>
+          <input type="text" class="form-control" id="name" formControlName="name" placeholder="{{pos.name}}">
+        </div>
+        <div class="form-group">
+            <label for="name">Цена</label>
+            <input type="text" class="form-control" id="price" formControlName="price" placeholder="{{pos.price}}">
+          </div>
+          <div class="form-group">
+            <label for="name">Описание</label>
+            <input type="text" class="form-control" id="description" formControlName="description" placeholder="{{pos.description}}">
+          </div>
+          <div class="form-group">
+            <label for="name">Категория</label>
+            <input type="text" class="form-control" id="category" formControlName="category" placeholder="{{pos.category}}">
+          </div>
+        
+        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+      </form>
     
 </div>

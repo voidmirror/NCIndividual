@@ -39,6 +39,7 @@ public class UserController {
         System.out.println(userRepository.findByUsername(user.getUsername()));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping(value = "/add", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public void changeUserRole(@RequestBody RoleChanger roleChanger) throws UserLoginAlreadyExistsException {
         System.out.println(roleChanger.toString());

@@ -1,10 +1,11 @@
 
 <div class="container" style="margin:10px;">
 <div class="row align-items-center">
-    <div class="col">
-        <div class="border-right">
-        <form class="main-block" [formGroup]="addWareForm" (ngSubmit)="onAddSubmit()" name="form">
-            <h3>Добавить товар</h3>
+    <div class="col-sm-6 border-right" style="padding-right: 10px;">
+        <h3>Добавить товар</h3>
+        <!-- <div class="border-right"> -->
+        <!-- <form class="main-block" [formGroup]="addWareForm" (ngSubmit)="onAddSubmit()" name="form">
+            
             <div>
                 <p>
                     <label>Имя: </label>
@@ -28,13 +29,43 @@
                     </button>
                 </p>
             </div>
-        </form>
+        </form> -->
+
+
+        <form class="needs-validation" novalidate [formGroup]="addWareForm" (ngSubmit)="onAddSubmit()" name="form">
+            
+            <div class="form-group">
+                <label for="name">Название</label>
+                <input type="text" class="form-control" id="name" formControlName="name" required>
+              </div>
+            <div class="form-group">
+                <label for="price">Цена</label>
+                <input type="text" class="form-control" id="price" formControlName="price" required>
+              </div>
+              <div class="form-group">
+                <label for="description">Описание</label>
+                <input type="text" class="form-control" id="description" formControlName="description" required>
+              </div>
+              <div class="form-group">
+                <label for="category">Категория</label>
+                <input type="text" class="form-control" id="category" formControlName="category" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+            
+          </form>
+    <!-- </div> -->
     </div>
-    </div>
-    <div class="col">
+    <div class="col-sm-5">
+        <h3>Удалить по ID</h3>
         <form [formGroup]="deleteWareForm" (ngSubmit)="onDeleteSubmit()" name="form">
-            <h3>Удалить по ID</h3>
-            <div>
+            <div class="form-group">
+                <label for="deleteId">ID</label>
+                <input type="text" class="form-control" id="deleteId" formControlName="id">
+            </div>
+            <button type="submit" class="btn btn-danger">Удалить</button>
+
+
+            <!-- <div>
                 <p>
                     <label>ID</label>
                     <input name="id" type="text" formControlName="id">
@@ -45,7 +76,7 @@
                         Удалить
                     </button>
                 </p>
-            </div>
+            </div> -->
         </form>
     </div>
 </div>

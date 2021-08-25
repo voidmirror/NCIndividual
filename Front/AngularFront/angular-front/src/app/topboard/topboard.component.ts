@@ -14,7 +14,7 @@ export class TopboardComponent implements OnInit {
   categories = CATEGORIES;
 
   constructor(private router: Router,
-    private positionService: PositionService) { }
+    public positionService: PositionService) { }
 
   ngOnInit(): void {
   }

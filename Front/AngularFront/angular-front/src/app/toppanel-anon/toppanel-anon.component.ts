@@ -5,6 +5,7 @@ import { CurrentUser } from '../current-user';
 import { BasketService } from '../basket.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../user-service.service';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-toppanel-anon',
@@ -16,12 +17,16 @@ export class ToppanelAnonComponent implements OnInit {
 
   toppanelAnon = TOPPANEL_ANON;
   num = 0;
-  btnProfileValue = '';
+  name: string = '';
+  btnProfileValue = this.userService.currentUser.name == undefined ? 'Sign In/Up' : this.userService.currentUser.name;
+  // private observeCurrentUser: Subject<string>;
 
   constructor(private router: Router, 
     public userService: UserService, 
     public basketService: BasketService,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal) {
+      // this.observeCurrentUser = new BehaviorSubject<string>()
+     }
 
   ngOnInit(): void {
     
