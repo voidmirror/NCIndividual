@@ -45,6 +45,7 @@ export class AddwareFormComponent implements OnInit {
     }))
     console.log(save);
     console.log(pos);
+    this.router.navigate(['contacts']);
     this.router.navigate(['/']);
   }
 

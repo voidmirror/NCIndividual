@@ -16,6 +16,6 @@ public class DiscountPersonal extends Discount {
 
     @Override
     public double applyDiscount(Double price, Integer num) {
-        return price * num * 0.93;
+        return price * 0.93;
     }
 }

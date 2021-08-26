@@ -11,18 +11,18 @@
             
             <app-product-item [pos]="item.pos"></app-product-item>
             ({{item.num}})
-            <button class="btn btn-outline-secondary" (click)="item.increaseNum();basketService.backupBasket()">+</button> | <button class="btn btn-outline-secondary" (click)="item.decreaseNum();basketService.backupBasket()">-</button> | <button class="btn btn-outline-secondary" (click)="basketService.deleteItem(item.pos.id)">X</button>
+            <button class="btn btn-outline-secondary" (click)="item.increaseNum();countSum();basketService.backupBasket()">+</button> | <button class="btn btn-outline-secondary" (click)="item.decreaseNum();countSum();basketService.backupBasket()">-</button> | <button class="btn btn-outline-secondary" (click)="basketService.deleteItem(item.pos.id);countSum();basketService.backupBasket()">X</button>
             <!-- <button >+</button> | <button >-</button> -->
         </div>
     </div>
 
     <br><br>
     <div>Сумма заказа: {{basketService.basketSum}}</div>
-    <button class="btn btn-primary" style="margin: 20px;">Оплатить заказ</button>
+    <button *ngIf="basketService.userService.currentUser.name != undefined && basketService.userService.currentUser.name != ''" class="btn btn-primary" style="margin: 20px;">Оплатить заказ</button>
 </div>
-<div *ngIf="isLogged() && (basketService.basket.length == 0 || basketService.basketSum == 0)" style="margin-top: 150px;">
+<div *ngIf="(basketService.userService.currentUser.name != undefined && basketService.userService.currentUser.name != '') && (basketService.basket.length == 0 || basketService.basketSum == 0)" style="margin-top: 150px;">
     <h3>Ваша корзина пока пуста</h3>
 </div>
-<div *ngIf="!isLogged()" style="margin-top: 150px;">
+<div *ngIf="basketService.userService.currentUser.name == undefined || basketService.userService.currentUser.name == ''" style="margin-top: 150px;">
     <h3>Войдите в Учётную запись, чтобы управлять корзиной</h3>
 </div>

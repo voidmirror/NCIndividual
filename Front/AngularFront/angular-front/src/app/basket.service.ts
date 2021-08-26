@@ -70,7 +70,7 @@ export class BasketService {
     
   }
 
-  public async calculateAllPrice(): Promise<number> {
+  public calculateAllPrice() {
 
     let sum: number = 0;
 
@@ -88,7 +88,7 @@ export class BasketService {
 
     console.log(this.basketSum);
     
-    await new Promise(resolve => setTimeout(resolve, 500));
+    // await new Promise(resolve => setTimeout(resolve, 500));
     console.log('after post sum is ' + sum);
     
 

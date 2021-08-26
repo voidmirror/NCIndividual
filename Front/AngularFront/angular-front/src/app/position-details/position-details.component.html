@@ -12,7 +12,8 @@
     <p>Описание: {{pos.description}}</p>
     <p><button *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" type="button" class="btn btn-outline-primary" style="margin-right: 10px;" (click)="discountService.addWareDiscount(pos, 'discount5per')">Добавить скидку в 5%</button>
     <button *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" type="button" class="btn btn-outline-primary" (click)="discountService.addWareDiscount(pos, 'discount10per')">Добавить скидку в 10%</button></p>
+    <p><button *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" type="button" class="btn btn-outline-primary" (click)="discountService.addWareDiscount(pos, 'discountEvery3Free')">Добавить скидку "Каждый 3-й бесплатно"</button></p>
     <p><button *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" type="button" class="btn btn-outline-danger" style="margin-right: 10px;" (click)="discountService.deleteWareDiscounts(pos)">Удалить скидки с товара</button>
     <button *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" type="button" class="btn btn-outline-danger" style="margin-right: 10px;" (click)="openPopup(edit)">Редактировать</button>
-    <button *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" type="button" class="btn btn-outline-danger" disabled>Удалить</button></p>
+    <button *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true" type="button" class="btn btn-outline-danger" (click)="deleteWare()">Удалить</button></p>
 </div>

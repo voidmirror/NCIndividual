@@ -41,6 +41,10 @@ export class ToppanelAnonComponent implements OnInit {
     this.checkProfileButtonValue();
   }
 
+  public redirectToLogin() {
+    this.router.navigate(['login']);
+  }
+
   checkProfileButtonValue(): void {
     if (this.userService.currentUser.name == undefined) {
       console.log(this.userService.currentUser.name);

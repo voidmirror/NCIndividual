@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="discount_type",
         discriminatorType = DiscriminatorType.INTEGER)
+//@DiscriminatorValue("0")
 public class Discount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

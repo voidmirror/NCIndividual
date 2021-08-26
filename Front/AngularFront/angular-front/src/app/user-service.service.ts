@@ -104,8 +104,9 @@ export class UserService {
   public logoutUser(){
       this.http.get('https://localhost:8443/logout');
       this.currentUser.clearCurrentUser();
+      // await new Promise(resolve => setTimeout(resolve, 1500));
       this.router.navigate(['']);
-      // await new Promise(resolve => setTimeout(resolve, 500));
+      
       // location.reload();
   }
 

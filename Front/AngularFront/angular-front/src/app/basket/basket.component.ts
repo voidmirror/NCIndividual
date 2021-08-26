@@ -43,6 +43,8 @@ export class BasketComponent implements OnInit, OnDestroy, OnChanges {
   // }
 
   public countSum(): number {
+    console.log('COUNT SUMMMMMMM');
+    
     this.basketService.calculateAllPrice();
     return 100;
     

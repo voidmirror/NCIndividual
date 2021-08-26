@@ -30,6 +30,10 @@ public class BasketController {
     public double calculateBasketPrice(@RequestBody BasketCountObject basketCountObject) {
         System.out.println("INSIDE BASKET ALL PRICES CONTROLLER");
         System.out.println(Arrays.toString(basketCountObject.getBasketPositions()));
+        if (basketCountObject.getBasketPositions().length == 0) {
+//            System.out.println("Basket is Empty");
+            return 0;
+        }
         return basketService.calculateAllBasket(basketCountObject.getBasketPositions(), basketCountObject.getUsername());
     }
 

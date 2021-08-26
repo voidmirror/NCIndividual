@@ -3,6 +3,7 @@ package com.own.service;
 import com.own.additional.BasketPosition;
 import com.own.entity.Discount;
 import com.own.entity.DiscountPersonal;
+import com.own.entity.Position;
 import com.own.repository.PositionRepository;
 import com.own.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,11 +38,14 @@ public class BasketService {
         System.out.println(Arrays.toString(basketPositions));
         System.out.println(username);
 
-        for (BasketPosition b : basketPositions) {
+        for (BasketPosition basketPosition : basketPositions) {
 
-            if (b.getPos().getDiscounts() != null) {
-                System.out.println("INSIDE DISCOUNTS");
-                if (!b.getPos().getDiscounts().isEmpty()) {
+            Position currentPosition = positionRepository.getById(basketPosition.getPos().getId());
+            System.out.println("CURRENT POSITION:" + currentPosition);
+
+//            if () {
+//                System.out.println("INSIDE DISCOUNTS");
+                if (currentPosition.getDiscounts() != null && !currentPosition.getDiscounts().isEmpty()) {
                     System.out.println("INSIDE DISCOUNTS NOT EMPTY");
 
                     ArrayList<Double> stackablePrice = new ArrayList<>();
@@ -49,15 +53,15 @@ public class BasketService {
                     ArrayList<Discount> stackableDiscounts = new ArrayList<>();
                     ArrayList<Discount> unstackableDiscounts = new ArrayList<>();
 
-                    for (Discount d : b.getPos().getDiscounts()) {
-                        if (d.isStackable()) {
-                            stackableDiscounts.add(d);
+                    for (Discount discount : currentPosition.getDiscounts()) {
+                        if (discount.isStackable()) {
+                            stackableDiscounts.add(discount);
                         } else {
-                            unstackableDiscounts.add(d);
+                            unstackableDiscounts.add(discount);
                         }
                     }
-                    for (Discount d : stackableDiscounts) {
-                        stackablePrice.add(d.applyDiscount(b.getPos().getPrice(), b.getNum()));
+                    for (Discount discount : stackableDiscounts) {
+                        stackablePrice.add(discount.applyDiscount(currentPosition.getPrice(), basketPosition.getNum()));
                     }
 
                     System.out.println(stackablePrice);
@@ -66,12 +70,14 @@ public class BasketService {
                     double currentSum = 0;
                     if (!stackablePrice.isEmpty()) {
                         currentSum = Collections.min(stackablePrice);
+                    } else {
+                        currentSum = currentPosition.getPrice() * basketPosition.getNum();
                     }
 
                     System.out.println("Current Sum after stackble: " + currentSum);
 
-                    for (Discount d : unstackableDiscounts) {
-                        currentSum = d.applyDiscount(currentSum, b.getNum());
+                    for (Discount discount : unstackableDiscounts) {
+                        currentSum = discount.applyDiscount(currentSum, basketPosition.getNum());
                     }
 
                     System.out.println("Current Sum after unstackble: " + currentSum);
@@ -80,73 +86,77 @@ public class BasketService {
 
                 } else {
                     System.out.println("NO DISCOUNTS");
-                    sum += b.getPos().getPrice() * b.getNum();
+                    sum += currentPosition.getPrice() * basketPosition.getNum();
                 }
-            }
-
-            System.out.println("Sum before global: " + sum);
-
-            // personal discount from repository
-            Set<Discount> personalDiscounts = userRepository.findByUsername(username).get().getDiscounts();;
-
-            int countWare = 0;
-
-            ArrayList<Double> stackablePrice = new ArrayList<>();
-            ArrayList<Discount> unstackableDiscounts = new ArrayList<>();
-
-            for (BasketPosition basketPosition : basketPositions) {
-                countWare += basketPosition.getNum();
-            }
-            System.out.println("Count Ware: " + countWare);
-
-            if (personalDiscounts != null && !personalDiscounts.isEmpty()) {
-                for (Discount d : personalDiscounts) {
-                    if (d.isStackable()) {
-                        stackablePrice.add(d.applyDiscount(sum, countWare));
-                    } else {
-                        unstackableDiscounts.add(d);
-                    }
-
-                }
-                if (!stackablePrice.isEmpty()) {
-                    sum = Collections.min(stackablePrice);
-                }
-                for (Discount d : unstackableDiscounts) {
-                    sum = d.applyDiscount(sum, countWare);
-                }
-            }
-
-            System.out.println("Sum after global: " + sum);
-
-            stackablePrice.clear();
-            unstackableDiscounts.clear();
-            System.out.println("AFTER CLEAR " + stackablePrice);
-            System.out.println("AFTER CLEAR " + unstackableDiscounts);
-
-            if (globalDiscounts != null && !globalDiscounts.isEmpty()) {
-
-                for (Discount d : globalDiscounts) {
-                    System.out.println(d.getName());
-                    if (d.isStackable()) {
-                        stackablePrice.add(d.applyDiscount(sum, countWare));
-                    } else {
-                        unstackableDiscounts.add(d);
-                    }
-
-                }
-                if (!stackablePrice.isEmpty()) {
-                    sum = Collections.min(stackablePrice);
-                }
-
-                if (!unstackableDiscounts.isEmpty()) {
-                    for (Discount d : unstackableDiscounts) {
-                        sum = d.applyDiscount(sum, countWare);
-                    }
-                }
-
-            }
-
+//            }
         }
+
+        System.out.println("Sum before global: " + sum);
+        sum = applyPersonalDiscounts(basketPositions, sum, username);
+        System.out.println("Sum after Personal: " + sum);
+        sum = applyGlobalDiscounts(basketPositions, sum);
+        System.out.println("Sum after Global: " + sum);
+
+
+        // personal discount from repository
+//        Set<Discount> personalDiscounts = userRepository.findByUsername(username).get().getDiscounts();;
+//
+//        int countWare = countWare(basketPositions);
+//
+//        ArrayList<Double> stackablePrice = new ArrayList<>();
+//        ArrayList<Discount> unstackableDiscounts = new ArrayList<>();
+
+//        for (BasketPosition countPosition : basketPositions) {
+//            countWare += countPosition.getNum();
+//        }
+//        System.out.println("Count Ware: " + countWare);
+
+//        if (personalDiscounts != null && !personalDiscounts.isEmpty()) {
+//            for (Discount discount : personalDiscounts) {
+//                if (discount.isStackable()) {
+//                    stackablePrice.add(discount.applyDiscount(sum, countWare));
+//                } else {
+//                    unstackableDiscounts.add(discount);
+//                }
+//
+//            }
+//            if (!stackablePrice.isEmpty()) {
+//                sum = Collections.min(stackablePrice);
+//            }
+//            for (Discount d : unstackableDiscounts) {
+//                sum = d.applyDiscount(sum, countWare);
+//            }
+//        }
+
+//        System.out.println("Sum after global: " + sum);
+//
+//        stackablePrice.clear();
+//        unstackableDiscounts.clear();
+//        System.out.println("AFTER CLEAR " + stackablePrice);
+//        System.out.println("AFTER CLEAR " + unstackableDiscounts);
+
+//        if (!globalDiscounts.isEmpty()) {
+//
+//            for (Discount d : globalDiscounts) {
+//                System.out.println(d.getName());
+//                if (d.isStackable()) {
+//                    stackablePrice.add(d.applyDiscount(sum, countWare));
+//                } else {
+//                    unstackableDiscounts.add(d);
+//                }
+//
+//            }
+//            if (!stackablePrice.isEmpty()) {
+//                sum = Collections.min(stackablePrice);
+//            }
+//
+//            if (!unstackableDiscounts.isEmpty()) {
+//                for (Discount d : unstackableDiscounts) {
+//                    sum = d.applyDiscount(sum, countWare);
+//                }
+//            }
+//
+//        }
 
         System.out.println("Sum at the end: " + sum);
         System.out.println("INIT CALCULATE ALL BASKET");
@@ -154,6 +164,84 @@ public class BasketService {
         System.out.println();
 
         return sum;
+    }
+
+    public double applyGlobalDiscounts(BasketPosition[] basketPositions, double sum) {
+        int countWare = countWare(basketPositions);
+
+        ArrayList<Double> stackablePrice = new ArrayList<>();
+        ArrayList<Discount> unstackableDiscounts = new ArrayList<>();
+
+//        double currentSum;
+
+        if (!globalDiscounts.isEmpty()) {
+
+            for (Discount discount : globalDiscounts) {
+//                System.out.println(discount.getName());
+                if (discount.isStackable()) {
+                    stackablePrice.add(discount.applyDiscount(sum, countWare));
+                } else {
+                    unstackableDiscounts.add(discount);
+                }
+            }
+
+            if (!stackablePrice.isEmpty()) {
+                sum = Collections.min(stackablePrice);
+            }
+
+            if (!unstackableDiscounts.isEmpty()) {
+                for (Discount d : unstackableDiscounts) {
+                    sum = d.applyDiscount(sum, countWare);
+                }
+            }
+
+        }
+
+        return sum;
+    }
+
+    public double applyPersonalDiscounts(BasketPosition[] basketPositions, double sum, String username) {
+        int countWare = countWare(basketPositions);
+
+        ArrayList<Double> stackablePrice = new ArrayList<>();
+        ArrayList<Discount> unstackableDiscounts = new ArrayList<>();
+
+        // personal discount from repository
+        Set<Discount> personalDiscounts = userRepository.findByUsername(username).get().getDiscounts();;
+
+        if (personalDiscounts != null && !personalDiscounts.isEmpty()) {
+            for (Discount discount : personalDiscounts) {
+                if (discount.isStackable()) {
+                    stackablePrice.add(discount.applyDiscount(sum, countWare));
+                } else {
+                    unstackableDiscounts.add(discount);
+                }
+            }
+
+            System.out.println(stackablePrice);
+            System.out.println(unstackableDiscounts);
+
+            if (!stackablePrice.isEmpty()) {
+                sum = Collections.min(stackablePrice);
+            }
+            for (Discount discount : unstackableDiscounts) {
+                sum = discount.applyDiscount(sum, countWare);
+            }
+        }
+
+        return sum;
+
+
+
+    }
+
+    public int countWare(BasketPosition[] basketPositions) {
+        int countWare = 0;
+        for (BasketPosition countPosition : basketPositions) {
+            countWare += countPosition.getNum();
+        }
+        System.out.println("Count Ware: " + countWare);
+        return countWare;
     }
 
     public void addGlobalDiscount(Discount discount) {

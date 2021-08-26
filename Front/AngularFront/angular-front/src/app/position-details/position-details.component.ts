@@ -22,6 +22,15 @@ export class PositionDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public deleteWare() {
+    this.positionService.getPositionById(this.pos.id).subscribe(data => {
+      console.log(data);
+      this.positionService.deletePosition(data);
+      console.log('after');
+      
+    }, (error) => console.log('ID not found'));
+  }
+
   public openPopup(content: any) {
     const modalRef = this.modalService.open(content);
   }

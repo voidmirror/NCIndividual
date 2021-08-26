@@ -2,12 +2,12 @@
 <div class="outer" style="margin: 50px;">
 
     <div class="inner">
-        /icon_profile/ <p>Персональная информация</p>
+        <h4>Персональная информация</h4><br>
         <p>Фамилия, Имя: {{userService.currentUser.name}}</p>
         <p>E-mail: {{userService.currentUser.email}}</p>
         <p>Телефон: {{userService.currentUser.phoneNumber}}</p>
         <p><button class="btn btn-outline-primary" disabled>Изменить данные</button></p>
-        <p><button class="btn btn-outline-danger" (click)='userService.logoutUser()'>Выйти из Учётной записи</button></p>
+        <p><button class="btn btn-outline-danger" (click)='userService.logoutUser(); basketService.clearBasket();'>Выйти из Учётной записи</button></p>
     </div>
 
     <!-- <div class="inner">

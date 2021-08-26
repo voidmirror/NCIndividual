@@ -12,14 +12,14 @@ import { PositionService } from '../position-service.service';
 })
 export class ProductCatalogComponent implements OnInit {
 
-  listPos: PositionListComponent;
-  positions: Position[];
+  // listPos: PositionListComponent;
+  positions!: Position[];
   isInCatalog: boolean = true;
 
   constructor(public positionService: PositionService, 
     private basketService: BasketService) {
-    this.listPos = new PositionListComponent(positionService);
-    this.positions = this.listPos.getPositions();
+    // this.listPos = new PositionListComponent(positionService);
+    // this.positions = this.listPos.getPositions();
    }
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class ProductCatalogComponent implements OnInit {
       this.positions = data;
     });
     // console.log(this.positions);
-    this.positions = this.listPos.getPositions();
+    // this.positions = this.listPos.getPositions();
     console.log('INIT PRODUCT CATALOG');
     
   }

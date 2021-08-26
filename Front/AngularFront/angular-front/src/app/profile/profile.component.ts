@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BasketService } from '../basket.service';
 import { CurrentUser } from '../current-user';
 import { UserService } from '../user-service.service';
 
@@ -11,7 +12,8 @@ export class ProfileComponent implements OnInit {
 
   // currentUser: CurrentUser;
 
-  constructor(public userService: UserService) {
+  constructor(public userService: UserService,
+    public basketService: BasketService) {
     // this.currentUser = currentUserNow.getInstance();
     
   }

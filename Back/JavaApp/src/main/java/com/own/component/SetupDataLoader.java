@@ -62,13 +62,17 @@ public class SetupDataLoader implements
                 edituserPrivilege);
         List<Privilege> userPrivileges = Arrays.asList(
                 viewProfilePrivilege);
+        List<Privilege> superuserPrivileges = Arrays.asList(
+                editCatalogPrivilege, editCatalogPrivilege, addwarePrivilege, edituserPrivilege, viewProfilePrivilege);
         createRoleIfNotFound("WAREHOUSE_MANAGER", warehouseManagerPrivileges);
         createRoleIfNotFound("ADMIN", adminPrivileges);
         createRoleIfNotFound("USER", userPrivileges);
+        createRoleIfNotFound("SUPERUSER", superuserPrivileges);
 //        createRoleIfNotFound("USER", Arrays.asList(readPrivilege));
 
         Role warehouseManagerRole = roleRepository.findByName("WAREHOUSE_MANAGER");
         Role adminRole = roleRepository.findByName("ADMIN");
+        Role superuserRole = roleRepository.findByName("SUPERUSER");
 
 
         User whmanager = new User();
@@ -80,7 +84,6 @@ public class SetupDataLoader implements
         whmanager.setRoles(new HashSet<>(Collections.singletonList(warehouseManagerRole)));
         userRepository.save(whmanager);
 
-
         User admin = new User();
         admin.setName("ADMIN");
         admin.setUsername("admin");
@@ -89,6 +92,15 @@ public class SetupDataLoader implements
         admin.setPhoneNumber("97787653443");
         admin.setRoles(new HashSet<>(Collections.singletonList(adminRole)));
         userRepository.save(admin);
+
+        User superuser = new User();
+        superuser.setName("SUPERUSER");
+        superuser.setUsername("superuser");
+        superuser.setPassword(passwordEncoder.encode("superuser"));
+        superuser.setEmail("superuser@test.com");
+        superuser.setPhoneNumber("89998887733");
+        superuser.setRoles(new HashSet<>(Collections.singletonList(superuserRole)));
+        userRepository.save(superuser);
 
         Position position = new Position();
         position.setName("Sneakers");
@@ -139,6 +151,10 @@ public class SetupDataLoader implements
         Discount10per discount10per = new Discount10per();
         discount10per.setStackable(true);
         discountRepository.save(discount10per);
+
+        DiscountEvery3Free discountEvery3Free = new DiscountEvery3Free();
+        discountEvery3Free.setStackable(false);
+        discountRepository.save(discountEvery3Free);
 
         DiscountPersonal discountPersonal = new DiscountPersonal();
         discountPersonal.setStackable(false);
