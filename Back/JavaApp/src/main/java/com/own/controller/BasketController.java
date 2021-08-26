@@ -22,7 +22,6 @@ public class BasketController {
     @PostMapping(value = "/calculate", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public double calculateBasketPrice(@RequestBody BasketPosition basketPosition) {
         System.out.println("INSIDE BASKET CONTROLLER");
-//        System.out.println(basketPosition);
         return basketService.calculatePrice(basketPosition);
     }
 
@@ -31,17 +30,9 @@ public class BasketController {
         System.out.println("INSIDE BASKET ALL PRICES CONTROLLER");
         System.out.println(Arrays.toString(basketCountObject.getBasketPositions()));
         if (basketCountObject.getBasketPositions().length == 0) {
-//            System.out.println("Basket is Empty");
             return 0;
         }
         return basketService.calculateAllBasket(basketCountObject.getBasketPositions(), basketCountObject.getUsername());
     }
-
-//    @PostMapping(value = "/calculate/all", consumes = {MediaType.APPLICATION_JSON_VALUE})
-//    public ResponseEntity<Double> calculateBasketPrice(@RequestBody BasketCountObject basketCountObject) {
-//        System.out.println("INSIDE BASKET ALL PRICES CONTROLLER");
-//        System.out.println(Arrays.toString(basketCountObject.getBasketPositions()));
-//        return new ResponseEntity<>(basketService.calculateAllBasket(basketCountObject.getBasketPositions(), basketCountObject.getUsername()), HttpStatus.OK);
-//    }
 
 }

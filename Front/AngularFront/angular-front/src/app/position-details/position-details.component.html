@@ -5,7 +5,7 @@
 <div class="col" style="margin: 20px;">
     <h3 style="align-content: center;">Описание</h3>
     <!-- TODO: for each span add *ngIf -->
-    <p>ID: {{pos.id}}</p>
+    <p *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true">ID: {{pos.id}}</p>
     <p>Имя товара: {{pos.name}}</p>
     <p>Цена: {{pos.price}} р.</p>
     <p>Категория: {{pos.category}}</p>

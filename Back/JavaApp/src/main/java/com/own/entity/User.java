@@ -139,19 +139,6 @@ public class User {
     }
 
 
-//    public String getRoles() {
-//        return roles;
-//    }
-
-//    public void setRoles(String roles) {
-//        this.roles = roles;
-//    }
-
-//    // TODO: getter-setter?
-//    public boolean isActive() {
-//        return active;
-//    }
-
     @Override
     public String toString() {
         return "User{" +

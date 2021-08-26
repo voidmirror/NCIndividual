@@ -76,10 +76,6 @@ public class Position {
         this.discounts = discounts;
     }
 
-    //    public void setDiscount(Set<Discount> discount) {
-//        this.discount = discount;
-//    }
-
     public void addDiscount(Discount discount) {
         if (discounts == null) {
             discounts = new HashSet<Discount>();

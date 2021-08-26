@@ -67,10 +67,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http
                 .cors().configurationSource(getCorsConfigurationSource()).and()
                 .authorizeRequests()
-//                .antMatchers("/rest/v1/users/**").hasRole("ADMIN")
-//                .antMatchers("/rest/v1/**").hasRole("USER")
-                .antMatchers("rest/v1/positions").permitAll()
-
 
                 .antMatchers(HttpMethod.GET, "rest/v1/positions").permitAll()
                 .antMatchers(HttpMethod.POST, "rest/v1/positions").hasAuthority("ADDWARE")
@@ -84,35 +80,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers(HttpMethod.POST, "rest/v1/discounts/ware").hasAuthority("EDIT_CATALOG")
                 .antMatchers(HttpMethod.POST, "rest/v1/discounts/user").hasAuthority("EDIT_USER")
                 .antMatchers(HttpMethod.POST, "rest/v1/discounts/ware/delete").hasAuthority("EDIT_CATALOG")
-                
-
-
-
-
-//                .antMatchers("rest/v1/positions/**").permitAll()
-//                .antMatchers("/rest/v1/users/add").permitAll()
-//                .antMatchers("/rest/v1/users/**").permitAll()
-//                .antMatchers("/").hasAnyRole("ADMIN", "USER")
-
                 .and().csrf().disable()
                 .headers().frameOptions().disable()
-
-
                 .and().formLogin().successHandler(successHandler()).failureHandler(failureHandler());
-//                .and().logout().addLogoutHandler();
-
     }
-
-//    @Bean
-//    CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.setAllowedOrigins(Arrays.asList("https://example.com"));
-//        configuration.setAllowedMethods(Arrays.asList("GET","POST"));
-//        configuration.setAllowedHeaders(Arrays.asList("*"));
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", configuration);
-//        return source;
-//    }
 
     public CorsConfigurationSource getCorsConfigurationSource() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -130,8 +101,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         return new AuthenticationSuccessHandler() {
             @Override
             public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-//                httpServletResponse.getWriter().append("OK");
-//                httpServletResponse.setStatus(200);
+
                 httpServletResponse.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
                 MappingJackson2HttpMessageConverter messageConverter = new MappingJackson2HttpMessageConverter();
                 ObjectMapper mapper = messageConverter.getObjectMapper();
@@ -160,8 +130,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         return new AuthenticationFailureHandler() {
             @Override
             public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-//                System.out.println(httpServletRequest.getUserPrincipal().toString());
-//                System.out.println(httpServletRequest.getUserPrincipal().getName());
                 System.out.println(httpServletRequest.getHeader("Content-Type"));
                 System.out.println(httpServletRequest.getAuthType());
                 System.out.println(httpServletRequest.getUserPrincipal());

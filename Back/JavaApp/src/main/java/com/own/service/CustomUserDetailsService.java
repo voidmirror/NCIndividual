@@ -21,8 +21,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-//    @Autowired
-//    private Pbkdf2PasswordEncoder encoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -33,14 +31,9 @@ public class CustomUserDetailsService implements UserDetailsService {
         return user.map(CustomUserDetails::new).get();
     }
 
-    // TODO: uncomment
     @Bean
     public Pbkdf2PasswordEncoder getPasswordEncoder() {
         return new Pbkdf2PasswordEncoder("mysecret");
     }
 
-//    @Bean
-//    public PasswordEncoder getPasswordEncoder() {
-//        return NoOpPasswordEncoder.getInstance();
-//    }
 }

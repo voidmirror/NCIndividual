@@ -19,7 +19,6 @@ public class Role {
     @ManyToMany(mappedBy = "roles")
     private Collection<User> users;
 
-//    @ElementCollection
     @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany
     @JoinTable(

@@ -3,9 +3,7 @@ package com.own.controller;
 import com.own.additional.RoleChanger;
 import com.own.entity.User;
 import com.own.exception.UserLoginAlreadyExistsException;
-import com.own.exception.UserNotFoundException;
 import com.own.repository.UserRepository;
-import com.own.service.PBKDF2Hasher;
 import com.own.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -25,7 +23,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @PreAuthorize(value = "USER")
     @GetMapping("/all")
     public List<User> retrieveAllUsers() {
         return userRepository.findAll();
@@ -35,7 +32,6 @@ public class UserController {
     public void addUser(@RequestBody User user) throws UserLoginAlreadyExistsException {
         System.out.println(user);
         userService.signUp(user);
-//        userRepository.save(user);
         System.out.println(userRepository.findByUsername(user.getUsername()));
     }
 
@@ -44,18 +40,6 @@ public class UserController {
     public void changeUserRole(@RequestBody RoleChanger roleChanger) throws UserLoginAlreadyExistsException {
         System.out.println(roleChanger.toString());
         userService.changeUser(roleChanger);
-//        userRepository.save(user);
-//        System.out.println(userRepository.findByUsername(user.getUsername()));
     }
-
-//    @PostMapping("/login")
-//    public void loginUser(@RequestBody User user) throws UserNotFoundException {
-//        if (userService.loginUser(user) != null) {
-//            System.out.println(user.getName() + " logged IN!");
-//            System.out.println(user);
-//        } else {
-//            System.out.println("Problem with " + user.getUsername());
-//        }
-//    }
 
 }

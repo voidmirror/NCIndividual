@@ -36,15 +36,12 @@ export class AddwareFormComponent implements OnInit {
   }
 
   onAddSubmit(): void {
-    // console.log(this.addWareForm.value);
     let pos = new Position(this.addWareForm.value.name, this.addWareForm.value.price, this.addWareForm.value.description, this.addWareForm.value.category);
     
     let save = this.positionService.savePosition(pos)
-    console.log(save.subscribe(data => {
+    save.subscribe(data => {
       pos = data;
-    }))
-    console.log(save);
-    console.log(pos);
+    })
     this.router.navigate(['contacts']);
     this.router.navigate(['/']);
   }
@@ -53,13 +50,10 @@ export class AddwareFormComponent implements OnInit {
     
     
       this.positionService.getPositionById(this.deleteWareForm.value.id).subscribe(data => {
-        console.log(data);
         this.positionService.deletePosition(data);
-        console.log('after');
         
       }, (error) => console.log('ID not found'));
 
-      // this.positionService.deletePosition(pp)
     
   }
 
