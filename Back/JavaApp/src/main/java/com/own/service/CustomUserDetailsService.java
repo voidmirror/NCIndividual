@@ -36,7 +36,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     // TODO: uncomment
     @Bean
     public Pbkdf2PasswordEncoder getPasswordEncoder() {
-        return new Pbkdf2PasswordEncoder();
+        return new Pbkdf2PasswordEncoder("mysecret");
     }
 
 //    @Bean

@@ -16,9 +16,13 @@ export class User {
     constructor (username: string, password: string, name?: string, email?: string, phoneNumber?: string, roles?: Role[]) {
         this.username = username;
         this.password = password;
-        if (name && email && phoneNumber) {
+        if (name) {
             this.name = name;
+        }
+        if (email) {
             this.email = email;
+        }
+        if (phoneNumber) {
             this.phoneNumber = phoneNumber;
         }
         if (roles) {
