@@ -21,7 +21,7 @@ public class DiscountController {
     @Autowired
     private DiscountService discountService;
 
-    @PreAuthorize("hasRole('WAREHOUSE_MANAGER')")
+//    @PreAuthorize("hasRole('WAREHOUSE_MANAGER')")
     @PostMapping(value = "/discounts/ware", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public void addWareDiscount(@RequestBody DiscountChanger discountChanger) {
         System.out.println("Inside ware discount controller");
@@ -29,7 +29,7 @@ public class DiscountController {
 
     }
 
-    @PreAuthorize("hasRole('WAREHOUSE_MANAGER')")
+//    @PreAuthorize("hasRole('WAREHOUSE_MANAGER')")
     @PostMapping(value = "/discounts/user", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public void addUserDiscount(@RequestBody PersonalDiscountPromote discountChanger) {
         System.out.println("Inside user discount controller");
@@ -37,7 +37,7 @@ public class DiscountController {
 
     }
 
-    @PreAuthorize("hasRole('WAREHOUSE_MANAGER')")
+//    @PreAuthorize("hasRole('WAREHOUSE_MANAGER')")
     @PostMapping(value = "/discounts/ware/delete", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public void addWareDiscount(@RequestBody Position position) {
         System.out.println("Inside delete discount controller");

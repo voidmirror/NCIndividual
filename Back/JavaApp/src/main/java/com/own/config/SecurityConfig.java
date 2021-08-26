@@ -9,6 +9,7 @@ import com.own.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -69,9 +70,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 //                .antMatchers("/rest/v1/users/**").hasRole("ADMIN")
 //                .antMatchers("/rest/v1/**").hasRole("USER")
                 .antMatchers("rest/v1/positions").permitAll()
+
+
+                .antMatchers(HttpMethod.GET, "rest/v1/positions").permitAll()
+                .antMatchers(HttpMethod.POST, "rest/v1/positions").hasAuthority("ADDWARE")
+                .antMatchers(HttpMethod.POST, "rest/v1/positions/delete").hasAuthority("EDIT_CATALOG")
+                .antMatchers(HttpMethod.PUT, "rest/v1/positions").hasAuthority("EDIT_CATALOG")
+
+                .antMatchers(HttpMethod.GET, "rest/v1/users/all").permitAll()
+                .antMatchers(HttpMethod.POST, "rest/v1/users/add").permitAll()
+                .antMatchers(HttpMethod.PUT, "rest/v1/users/add").hasAuthority("EDIT_USER")
+
+                .antMatchers(HttpMethod.POST, "rest/v1/discounts/ware").hasAuthority("EDIT_CATALOG")
+                .antMatchers(HttpMethod.POST, "rest/v1/discounts/user").hasAuthority("EDIT_USER")
+                .antMatchers(HttpMethod.POST, "rest/v1/discounts/ware/delete").hasAuthority("EDIT_CATALOG")
+                
+
+
+
+
 //                .antMatchers("rest/v1/positions/**").permitAll()
-                .antMatchers("/rest/v1/users/add").permitAll()
-                .antMatchers("/rest/v1/users/**").permitAll()
+//                .antMatchers("/rest/v1/users/add").permitAll()
+//                .antMatchers("/rest/v1/users/**").permitAll()
 //                .antMatchers("/").hasAnyRole("ADMIN", "USER")
 
                 .and().csrf().disable()
