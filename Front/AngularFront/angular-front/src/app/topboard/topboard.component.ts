@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MENUITEMS, CATEGORIES} from '../list-menu';
 import { Router } from '@angular/router';
 import { PositionService } from '../position-service.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from '../user-service.service';
 
 @Component({
   selector: 'app-topboard',
@@ -10,11 +12,13 @@ import { PositionService } from '../position-service.service';
 })
 export class TopboardComponent implements OnInit {
 
-  menuitems = MENUITEMS;
-  categories = CATEGORIES;
+  // menuitems = MENUITEMS;
+  // categories = CATEGORIES;
 
   constructor(private router: Router,
-    public positionService: PositionService) { }
+    public positionService: PositionService,
+    private modalService: NgbModal,
+    public userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -31,6 +35,10 @@ export class TopboardComponent implements OnInit {
   filterCatalog(filter: string): void {
     this.positionService.setCurrentFilter(filter);
     this.redirectToMain();
+  }
+
+  public openPopup(content: any) {
+    const modalRef = this.modalService.open(content);
   }
 
 }

@@ -16,3 +16,12 @@ export interface BasketCalculator {
     username : string;
     basketSum: number;
 }
+
+export class Category {
+    id!: number;
+    name!: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+}

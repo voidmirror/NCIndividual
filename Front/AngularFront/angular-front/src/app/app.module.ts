@@ -28,6 +28,7 @@ import { EditwareFormComponent } from './editware-form/editware-form.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { EdituserFormComponent } from './edituser-form/edituser-form.component';
 import { AddroleUserComponent } from './addrole-user/addrole-user.component';
+import { AddcategoryFormComponent } from './addcategory-form/addcategory-form.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AddroleUserComponent } from './addrole-user/addrole-user.component';
     EditwareFormComponent,
     UserCardComponent,
     EdituserFormComponent,
-    AddroleUserComponent
+    AddroleUserComponent,
+    AddcategoryFormComponent
   ],
   imports: [
     BrowserModule,

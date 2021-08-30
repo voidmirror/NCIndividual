@@ -13,7 +13,6 @@ import { PositionService } from '../position-service.service';
 export class EditwareFormComponent implements OnInit {
 
   @Input() pos!: Position;
-  categories = CATEGORIES;
 
   editWareForm = new FormGroup({
     id: new FormControl(),
@@ -23,7 +22,9 @@ export class EditwareFormComponent implements OnInit {
     category: new FormControl()
   });
 
-  constructor(private positionService: PositionService) {
+  
+
+  constructor(public positionService: PositionService) {
    }
 
   ngOnInit(): void {
@@ -41,5 +42,7 @@ export class EditwareFormComponent implements OnInit {
     this.positionService.editPosition(position);
     location.reload();
   }
+
+  
 
 }

@@ -35,6 +35,9 @@ public class SetupDataLoader implements
     private DiscountRepository discountRepository;
 
     @Autowired
+    private CategoryRepository categoryRepository;
+
+    @Autowired
     private BasketService basketService;
 
     @Autowired
@@ -106,42 +109,42 @@ public class SetupDataLoader implements
         position.setName("Sneakers");
         position.setPrice(456.50);
         position.setDescription("Comfortable");
-        position.setCategory("Shoes");
+        position.setCategory("Обувь");
         positionRepository.save(position);
 
         Position position1 = new Position();
         position1.setName("Hoop");
         position1.setPrice(340);
         position1.setDescription("Lightweight");
-        position1.setCategory("Equipment");
+        position1.setCategory("Спортивные снаряды");
         positionRepository.save(position1);
 
         Position position2 = new Position();
         position2.setName("Football boots");
         position2.setPrice(580.50);
         position2.setDescription("For free far run");
-        position2.setCategory("Football");
+        position2.setCategory("Футбол");
         positionRepository.save(position2);
 
         Position position3 = new Position();
         position3.setName("Hockey stick");
         position3.setPrice(365.99);
         position3.setDescription("Durable");
-        position3.setCategory("Hockey");
+        position3.setCategory("Хоккей");
         positionRepository.save(position3);
 
         Position position4 = new Position();
         position4.setName("Basketball ball");
         position4.setPrice(280);
         position4.setDescription("Really round");
-        position4.setCategory("Basketball");
+        position4.setCategory("Баскетбол");
         positionRepository.save(position4);
 
         Position position5 = new Position();
         position5.setName("Tatami mat");
         position5.setPrice(580);
         position5.setDescription("Soft");
-        position5.setCategory("Equipment");
+        position5.setCategory("Спортивные снаряды");
         positionRepository.save(position5);
 
         Discount5per discount5per = new Discount5per();
@@ -164,6 +167,15 @@ public class SetupDataLoader implements
         discountGlobal.setStackable(false);
         basketService.addGlobalDiscount(discountGlobal);
         discountRepository.save(discountGlobal);
+
+
+        categoryRepository.save(new Category("Футбол"));
+        categoryRepository.save(new Category("Воллейбол"));
+        categoryRepository.save(new Category("Хоккей"));
+        categoryRepository.save(new Category("Спортивные снаряды"));
+        categoryRepository.save(new Category("Обувь"));
+
+        System.out.println(categoryRepository.findAll());
 
 
         alreadySetup = true;

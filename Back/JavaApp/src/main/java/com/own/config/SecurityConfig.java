@@ -69,6 +69,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .authorizeRequests()
 
                 .antMatchers(HttpMethod.GET, "rest/v1/positions").permitAll()
+                .antMatchers(HttpMethod.GET, "rest/v1/categories").permitAll()
+                .antMatchers(HttpMethod.POST, "rest/v1/categories").hasAuthority("EDIT_CATALOG")
                 .antMatchers(HttpMethod.POST, "rest/v1/positions").hasAuthority("ADDWARE")
                 .antMatchers(HttpMethod.POST, "rest/v1/positions/delete").hasAuthority("EDIT_CATALOG")
                 .antMatchers(HttpMethod.PUT, "rest/v1/positions").hasAuthority("EDIT_CATALOG")

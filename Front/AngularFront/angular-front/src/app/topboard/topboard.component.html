@@ -1,3 +1,7 @@
+<ng-template #addcategory let-modal>
+  <app-addcategory-form></app-addcategory-form>
+</ng-template>
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="z-index: 1; position: absolute; width: 100%;">
     <div class="container-fluid">
@@ -15,10 +19,12 @@
               Категории
             </a>
             <ul class="dropdown-menu" container="body" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" (click)="filterCatalog('Football');positionService.changeCatalogHeader()">Футбол</a></li>
+              <li *ngFor="let cat of positionService.categories"><a class="dropdown-item" (click)="filterCatalog(cat.name);positionService.changeCatalogHeader()">{{cat.name}}</a></li>
+              <li *ngIf="userService.currentUser.findPrivilege('EDIT_CATALOG') == true"><a class="dropdown-item" (click)="openPopup(addcategory)">+</a></li>
+              <!-- <li><a class="dropdown-item" (click)="filterCatalog('Football');positionService.changeCatalogHeader()">Футбол</a></li>
               <li><a class="dropdown-item" (click)="filterCatalog('Volleyball');positionService.changeCatalogHeader()">Воллейбол</a></li>
               
-              <li><a class="dropdown-item" (click)="filterCatalog('Hockey');positionService.changeCatalogHeader()">Хоккей</a></li>
+              <li><a class="dropdown-item" (click)="filterCatalog('Hockey');positionService.changeCatalogHeader()">Хоккей</a></li> -->
             </ul>
           </li>
           <li class="nav-item">

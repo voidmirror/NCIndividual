@@ -1,0 +1,8 @@
+
+<form [formGroup]="categoryForm" (ngSubmit)="saveCategory()" name="categoryForm" style="margin: 20px;">
+<div class="mb-3">
+    <label for="inputCategory" class="form-label">Новая категория</label>
+    <input type="text" class="form-control" formControlName="name" id="inputCategory">
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
