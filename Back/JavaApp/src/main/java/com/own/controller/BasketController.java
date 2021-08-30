@@ -1,5 +1,6 @@
 package com.own.controller;
 
+import com.own.additional.BasketCalculator;
 import com.own.additional.BasketCountObject;
 import com.own.additional.BasketPosition;
 import com.own.service.BasketService;
@@ -25,14 +26,54 @@ public class BasketController {
         return basketService.calculatePrice(basketPosition);
     }
 
+//    @PostMapping(value = "/calculate/all", consumes = {MediaType.APPLICATION_JSON_VALUE})
+//    public double calculateBasketPrice(@RequestBody BasketCountObject basketCountObject) {
+//        System.out.println("INSIDE BASKET ALL PRICES CONTROLLER");
+//        System.out.println(Arrays.toString(basketCountObject.getBasketPositions()));
+//        if (basketCountObject.getBasketPositions().length == 0) {
+//            return 0;
+//        }
+//        return basketService.calculateAllBasket(basketCountObject.getBasketPositions(), basketCountObject.getUsername());
+//    }
+
+//    @PostMapping(value = "/calculate/all", consumes = {MediaType.APPLICATION_JSON_VALUE})
+//    public double calculateBasketPrice(@RequestBody BasketCountObject basketCountObject) {
+//        System.out.println("INSIDE BASKET ALL PRICES CONTROLLER");
+//        System.out.println(Arrays.toString(basketCountObject.getBasketPositions()));
+//        if (basketCountObject.getBasketPositions().length == 0) {
+//            return 0;
+//        }
+//        return basketService.calculateAllBasket(basketCountObject.getBasketPositions(), basketCountObject.getUsername());
+//    }
+
     @PostMapping(value = "/calculate/all", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public double calculateBasketPrice(@RequestBody BasketCountObject basketCountObject) {
+    public BasketCalculator calculateBasketPrice(@RequestBody BasketCalculator basketCalculator) {
         System.out.println("INSIDE BASKET ALL PRICES CONTROLLER");
-        System.out.println(Arrays.toString(basketCountObject.getBasketPositions()));
-        if (basketCountObject.getBasketPositions().length == 0) {
-            return 0;
+        System.out.println(basketCalculator);
+        System.out.println(Arrays.toString(basketCalculator.getBasketPositions()));
+        if (basketCalculator.getBasketPositions().length == 0) {
+            basketCalculator.setBasketSum(0.0);
+            return basketCalculator;
         }
-        return basketService.calculateAllBasket(basketCountObject.getBasketPositions(), basketCountObject.getUsername());
+        basketCalculator = basketService.reloadBasket(basketCalculator);
+        basketCalculator.setBasketSum(basketService.calculateAllBasket(basketCalculator.getBasketPositions(), basketCalculator.getUsername()));
+        System.out.println("END: " + basketCalculator);
+        return basketCalculator;
     }
+
+//    @PostMapping(value = "/calculate/all", consumes = {MediaType.APPLICATION_JSON_VALUE})
+//    public BasketPosition[] calculateBasketPrice(@RequestBody BasketCalculator basketCalculator) {
+//        System.out.println("INSIDE BASKET ALL PRICES CONTROLLER");
+//        System.out.println(basketCalculator);
+//        System.out.println(Arrays.toString(basketCalculator.getBasketPositions()));
+//        if (basketCalculator.getBasketPositions().length == 0) {
+//            basketCalculator.setBasketSum(0.0);
+//            return basketCalculator.getBasketPositions();
+//        }
+//        basketCalculator = basketService.reloadBasket(basketCalculator);
+//        basketCalculator.setBasketSum(basketService.calculateAllBasket(basketCalculator.getBasketPositions(), basketCalculator.getUsername()));
+//        System.out.println("END: " + basketCalculator);
+//        return basketCalculator.getBasketPositions();
+//    }
 
 }

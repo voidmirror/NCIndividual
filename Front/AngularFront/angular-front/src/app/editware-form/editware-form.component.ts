@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { positionService } from '@ng-bootstrap/ng-bootstrap/util/positioning';
+import { CATEGORIES } from '../list-menu';
 import { Position } from '../Position';
 import { PositionService } from '../position-service.service';
 
@@ -11,6 +13,7 @@ import { PositionService } from '../position-service.service';
 export class EditwareFormComponent implements OnInit {
 
   @Input() pos!: Position;
+  categories = CATEGORIES;
 
   editWareForm = new FormGroup({
     id: new FormControl(),
@@ -20,15 +23,18 @@ export class EditwareFormComponent implements OnInit {
     category: new FormControl()
   });
 
-  constructor(private positionService: PositionService) { }
+  constructor(private positionService: PositionService) {
+   }
 
   ngOnInit(): void {
   }
 
   public editPosition(): void {
+    console.log(this.editWareForm.value.category);
     let position = new Position(this.editWareForm.value.name == null ? this.pos.name : this.editWareForm.value.name,
       this.editWareForm.value.price == null ? this.pos.price : this.editWareForm.value.price,
       this.editWareForm.value.description == null ? this.pos.description : this.editWareForm.value.description,
+      // this.editWareForm.value.category == null ? this.pos.category : this.editWareForm.value.category);
       this.editWareForm.value.category == null ? this.pos.category : this.editWareForm.value.category);
 
     position.id = this.pos.id;

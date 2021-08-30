@@ -38,15 +38,17 @@ export class BasketPosition {
 
     }
 
-    public increaseNum() {
+    public increaseNum(): void {
         this.num += 1;
+        console.log('INCREASE NUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUM');
+        
         this.calculatePrice();
         // this.basketService.backupBasket();
     }
 
     public setNum(num: number): void {
         this.num = num;
-        this.calculatePrice()
+        // this.calculatePrice()
     }
 
     public decreaseNum() {

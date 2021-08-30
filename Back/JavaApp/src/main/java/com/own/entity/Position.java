@@ -103,7 +103,9 @@ public class Position {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +
+                ", category='" + category + '\'' +
                 ", discounts=" + (discounts == null ? "null" : Arrays.toString(discounts.toArray())) +
                 '}';
     }
+
 }

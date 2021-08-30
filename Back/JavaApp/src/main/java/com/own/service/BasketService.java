@@ -1,5 +1,6 @@
 package com.own.service;
 
+import com.own.additional.BasketCalculator;
 import com.own.additional.BasketPosition;
 import com.own.entity.Discount;
 import com.own.entity.DiscountPersonal;
@@ -141,6 +142,19 @@ public class BasketService {
 
 
 
+    }
+
+    public BasketCalculator reloadBasket(BasketCalculator basketCalculator) {
+        ArrayList<BasketPosition> newBasketPositions = new ArrayList<>();
+        for (BasketPosition basketPosition : basketCalculator.getBasketPositions()) {
+            Optional<Position> position = positionRepository.findById(basketPosition.getPos().getId());
+            if (position.isPresent()) {
+                basketPosition.setPos(position.get());
+                newBasketPositions.add(basketPosition);
+            }
+        }
+        basketCalculator.setBasketPositions(newBasketPositions.toArray(new BasketPosition[0]));
+        return basketCalculator;
     }
 
     public int countWare(BasketPosition[] basketPositions) {
